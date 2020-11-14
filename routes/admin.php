@@ -39,17 +39,17 @@ Route::group(
             });
             ## end Shipping Routes
             
-             ## Branches Routes 
-             Route::group(['namespace' =>'Branches','prefix' => 'branches'], function () {
-                Route::get('/','BranchController@index')->name('admin.branches');
-                Route::get('/create','BranchController@create')->name('admin.branches.create');
-                Route::post('/','BranchController@store')->name('admin.branches.store');
-                Route::get('/show/{id}','BranchController@show')->name('admin.branches.show');
-                Route::get('/edit/{id}','BranchController@edit')->name('admin.branches.edit');
-                Route::put('/{id}','BranchController@update')->name('admin.branches.update');
-                Route::get('delete/{id}','BranchController@destroy')->name('admin.branches.delete');
+             ## Categories Routes 
+             Route::group(['namespace' =>'Category','prefix' => 'categories'], function () {
+                Route::get('/','CategoryController@index')->name('admin.categories');
+                Route::get('/create','CategoryController@create')->name('admin.categories.create');
+                Route::post('/','CategoryController@store')->name('admin.categories.store');
+                Route::get('/show/{id}','CategoryController@show')->name('admin.categories.show');
+                Route::get('/edit/{id}','CategoryController@edit')->name('admin.categories.edit');
+                Route::put('/{id}','CategoryController@update')->name('admin.categories.update');
+                Route::get('delete/{id}','CategoryController@destroy')->name('admin.categories.delete');
             });
-            ## end Branches Routes 
+            ## end Categories Routes 
 
              ## Products Routes 
              Route::group(['namespace' =>'Products','prefix' => 'products'], function () {
@@ -63,14 +63,14 @@ Route::group(
             ## end Produts Routes 
 
              ## Suppliers Routes 
-             Route::group(['namespace' =>'Suppliers','prefix' => 'suppliers'], function () {
-                Route::get('/','SupplierController@index')->name('admin.suppliers');
-                Route::get('/create','SupplierController@create')->name('admin.suppliers.create');
-                Route::post('/','SupplierController@store')->name('admin.suppliers.store');
-                Route::get('/show/{id}','SupplierController@show')->name('admin.suppliers.show');
-                Route::get('/edit/{id}','SupplierController@edit')->name('admin.suppliers.edit');
-                Route::put('/{id}','SupplierController@update')->name('admin.suppliers.update');
-                Route::get('delete/{id}','SupplierController@destroy')->name('admin.suppliers.delete');
+             Route::group(['namespace' =>'Category','prefix' => 'subcategories'], function () {
+                Route::get('/','SubCategoryController@index')->name('admin.subcategories');
+                Route::get('/create','SubCategoryController@create')->name('admin.subcategories.create');
+                Route::post('/','SubCategoryController@store')->name('admin.subcategories.store');
+                Route::get('/show/{id}','SubCategoryController@show')->name('admin.subcategories.show');
+                Route::get('/edit/{id}','SubCategoryController@edit')->name('admin.subcategories.edit');
+                Route::put('/{id}','SubCategoryController@update')->name('admin.subcategories.update');
+                Route::get('delete/{id}','SubCategoryController@destroy')->name('admin.subcategories.delete');
             });
             ## end Suppliers Routes 
 

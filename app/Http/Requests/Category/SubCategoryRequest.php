@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Category;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Validator;
 
-class LoginRequest extends FormRequest
+class SubCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,7 +13,7 @@ class LoginRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return auth()->user();
     }
 
     /**
@@ -23,12 +21,12 @@ class LoginRequest extends FormRequest
      *
      * @return array
      */
-    public function rules(Request $request)
+    public function rules()
     {
         return [
-            'email' => 'required|email',
-            'password' => 'required'
+            'title' => 'required',
+            'title_ar' => 'required',
+            'parent_id' => 'required|numeric'
         ];
     }
-
 }

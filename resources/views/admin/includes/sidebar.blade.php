@@ -13,17 +13,17 @@
           
           
           <span class="badge badge badge-danger badge-pill float-right mr-1 mt-1"></span>
-          <li class="nav-item"><a href="{{route('admin.products')}}"><i class="icon-grid" style="color:red"></i><span
+          <li class="nav-item"><a href="{{route('admin.categories')}}"><i class="icon-grid" style="color:red"></i><span
               class="menu-title" data-i18n="nav.add_on_drag_drop.main">Categories </span></a>
           </li>
 
           <span class="badge badge badge-warning badge-pill float-right mr-1 mt-1"></span>
-          <li class="nav-item"><a href="{{route('admin.employees')}}"><i class="icon-grid" style="color:goldenrod"></i><span
+          <li class="nav-item"><a href="{{route('admin.subcategories')}}"><i class="icon-grid" style="color:goldenrod"></i><span
               class="menu-title" data-i18n="nav.add_on_drag_drop.main">Sub Categories </span></a>
           </li>
 
           <span class="badge badge badge-secondary badge-pill float-right mr-1 mt-1"></span>
-          <li class="nav-item "><a href="{{route('admin.suppliers')}}"><i class="icon-users" style="color:gray"></i><span
+          <li class="nav-item "><a href=""><i class="icon-users" style="color:gray"></i><span
               class="menu-title" data-i18n="nav.add_on_drag_drop.main">Brands </span></a>
           </li>
 
