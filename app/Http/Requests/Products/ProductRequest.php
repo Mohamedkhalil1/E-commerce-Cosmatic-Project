@@ -24,24 +24,12 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'          =>  'required|max:30',
-            'description'   =>  'required',
-            'price'         =>  'required|numeric',
-            'stock'         => 'required|integer',
-            'branch_id'     => 'required'
+            'title'          =>  'required|max:30',
+            'price'          =>  'required|numeric',
+            'price_discount' =>  'required|numeric',
+            'stock'          =>  'required|integer',
+            'image'          =>  'required_without:id|image'
         ];
     }
 
-    public function messages(){
-        return [
-            'name.required'             => 'يجب ادخال اسم المنتج',
-            'name.max'                  => 'يجب ان يكون اقصى عدد من الاحراف لاسم 30 حرف',
-            'description.required'      => 'يجب ادخال وصف المنتج',
-            'price.required'            => 'يجب ادخال سعر المنتج',
-            'price.numeric'             => 'السعر يجب ان يكون رقم',
-            'stock.required'            => 'يجب ادخال كميه المنتج',
-            'stock.integer'             => 'الكميه يجب ان تكون رقم صحيح',
-            'branch_id.required'        =>  'يجب ادخال الفرع الخاص بالمنتج'
-        ];
-    }
 }

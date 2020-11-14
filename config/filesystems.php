@@ -55,9 +55,9 @@ return [
             'visibility' => 'public',
         ],
 
-        'maincategories' => [
+        'products' => [
             'driver' => 'local',
-            'root' => base_path().'/assets/images/maincategories/',
+            'root' => base_path().'/assets/images/products/',
             'url' => env('APP_URL').'/public',
             'visibility' => 'public',
         ],

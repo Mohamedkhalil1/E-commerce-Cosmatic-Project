@@ -15,7 +15,7 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
               <div class="card border-grey border-lighten-3 px-1 py-1 m-0">
                 <div class="card-header border-0 pb-0">
                   <div class="card-title text-center">
-                    <img src="https://gfx4arab.com/wp-content/uploads/2018/12/blue-company-logo_1057-513.jpg" height="200px" weight="200px" alt="لوجو الشركه">
+                    <img src="https://static.rfstat.com/renderforest/images/v2/logo-homepage/gradient_2.png" height="200px" weight="200px" alt="logo">
                   </div>
                 </div>
                 <div class="card-content mt-2">

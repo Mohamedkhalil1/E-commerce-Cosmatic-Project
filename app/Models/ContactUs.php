@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Transformers\User\ContactUsTransformer;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +10,7 @@ class ContactUs extends Model
 {
     public $transformer = ContactUsTransformer::class;
 
-    protected $fillable = ['subject', 'message', 'user_id'];
+    protected $guarded = [];
 
     public function user(){
         return BelongsTo(User::class,'user_id');

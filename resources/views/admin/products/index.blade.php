@@ -1,25 +1,10 @@
 @extends('layouts.admin')
-@section('title',"المنتاجات")
+@section('title',"Products")
 @section('content')
     <div class="app-content content">
         <div class="content-wrapper">
-            <div class="content-header row">
-                <div class="content-header-left col-md-6 col-12 mb-1">
-                    <h3 class="content-header-title"> المنتجات </h3>
-                    <div class="row breadcrumbs-top">
-                        <div class="breadcrumb-wrapper col-12">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">الرئيسية</a>
-                                </li>
-                                <li class="breadcrumb-item active"> المنتاجات
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="heading-elements mb-2">
-                <a href="{{route('admin.products.create')}}" class="btn btn-success btn-sm"><i class="ft-plus white"></i> اضافه منتج جديد</a>
+                <a href="{{route('admin.products.create')}}" class="btn btn-success btn-sm"><i class="ft-plus white"></i>Add Product</a>
               </div>
             <div class="content-body">
                 <!-- DOM - jQuery events table -->
@@ -28,7 +13,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">جميع المنتجات </h4>
+                                    <h4 class="card-title">All Products</h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -50,12 +35,13 @@
                                             class="table table-de mb-0 display nowrap table-striped table-bordered">
                                             <thead class="">
                                             <tr>
-                                                <th>الاسم</th>
-                                                <th>الوصف</th>
-                                                <th>السعر</th>
-                                                <th>الكميه المخزنه</th>
-                                                <th>الفرع</th>
-                                                <th>الإجراءات</th>
+                                                <th>Title</th>
+                                                <th>Description</th>
+                                                <th>Price</th>
+                                                <th>PriceAfterDiscount</th>
+                                                 <th>Stock</th>
+                                                <th>Image</th>
+                                                <th>Settings</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -63,11 +49,14 @@
                                             @isset($products)
                                                 @foreach($products as $product)
                                                     <tr>
-                                                        <td>{{$product->name}}</td>
+                                                        <td>{{$product->title}}</td>
                                                         <td>{{$product->description}}</td>
                                                         <td>{{$product->price}}</td>
+                                                        <td>{{$product->price_discount}}</td>
                                                         <td>{{$product->stock}}</td>
-                                                        <td>{{$product->branch ? $product->branch->name : ''}}</td>
+                                                        <td>
+                                                           <img style="width: 150px; height: 100px;" src="http://localhost:8888/assets/{{$product->image}}">
+                                                        </td>
                                                         <td>
                                                             <div class="btn-group" role="group"
                                                                  aria-label="Basic example">

@@ -1,13 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Transformers\Brand\BrandTransformer;
 use Illuminate\Database\Eloquent\Model;
 
 class Brand extends Model
 {
-    protected $fillable = ['title', 'description'];
+    protected $guarded = [];
 
     public $transformer = BrandTransformer::class;
 

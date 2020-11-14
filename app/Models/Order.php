@@ -1,13 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Transformers\Order\OrderTransformer;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    protected $fillable = ['amount', 'user_id'];
+    protected $guarded = [];
 
     public $transformer = OrderTransformer::class;
 

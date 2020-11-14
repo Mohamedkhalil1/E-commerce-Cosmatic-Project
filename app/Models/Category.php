@@ -1,13 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Transformers\Category\CategoryTransformer;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $fillable = ['title', 'description'];
+    protected $guarded = [];
 
     public $transformer = CategoryTransformer::class;
 

@@ -1,13 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Transformers\Devision\DevisionTransformer;
 use Illuminate\Database\Eloquent\Model;
 
 class Deivison extends Model
 {
-    protected $fillable = ['title', 'description'];
+    protected $guarded = [];
 
     public $transformer = DevisionTransformer::class;
 

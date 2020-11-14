@@ -1,13 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Transformers\Ad\AdTransformer;
 use Illuminate\Database\Eloquent\Model;
 
 class Ad extends Model
 {
-   protected $fillable = ['title','body','image'];
+    protected $guarded = [];
    protected $table = 'ads';
    public $transformer = AdTransformer::class;
 

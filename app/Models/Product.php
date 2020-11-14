@@ -1,13 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Transformers\Product\ProductTransformer;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $fillable = ['title', 'description', 'price', 'stock' ,'image' ,'discond'];
+    protected $guarded = [];
 
     public $transformer = ProductTransformer::class;
 

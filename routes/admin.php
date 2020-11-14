@@ -14,7 +14,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-define('PAGINATION_COUNT',5);
+#define('PAGINATION_COUNT',5);
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),

@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin\Products;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Products\ProductRequest;
-use App\Models\Branch;
 use App\Models\Product;
+
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,10 +14,10 @@ class ProductController extends Controller
     public function index()
     {
         try{
-            $products = Product::select()->get();
+            $products = Product::all();
             return view('admin.products.index',compact('products'));
         }catch(\Exception $ex){
-            return redirect()->route('admin.products')->with(['error' => 'حدث مشكله جرب مره اخرى']);
+            return redirect()->route('admin.products')->with(['error' =>  $this->error_msg]);
         }
         
     }
@@ -26,21 +26,25 @@ class ProductController extends Controller
     public function create()
     {
         try{
-            $branches = Branch::select()->get();
-            return view('admin.products.create',compact('branches'));  
+            
+            return view('admin.products.create');  
         }catch(\Exception $ex){
-            return redirect()->route('admin.products')->with(['error' => 'حدث مشكله جرب مره اخرى']);
+            return redirect()->route('admin.products')->with(['error' => $this->error_msg]);
         }
     }
 
     public function store(ProductRequest $request)
     {
+    
         try{
             $params = $request->except('_token');
+            $filePath = $this->uploadImage('products',$request->image);
+            $params['image'] = $filePath;
             Product::create($params);
-            return redirect()->route('admin.products')->with(['success' => 'تم إضافه المنتج بنجاح']);
+            return redirect()->route('admin.products')->with(['success' => 'Product '.$this->added_msg]);
         }catch(\Exception $ex){
-            return redirect()->route('admin.products')->with(['error' => 'حدث مشكله جرب مره اخرى']);
+            dd($ex);
+            return redirect()->route('admin.products')->with(['error' => $this->error_msg]);
         }
      
     }
@@ -53,14 +57,16 @@ class ProductController extends Controller
     public function edit($id)
     {
         try{
-            $branches = Branch::select()->get();
+           
             $product  = Product::find($id);
+           
             if($product === null){
-                return redirect()->route('admin.products')->with(['error' => 'هذا المنتج غير موجود']);
+                return redirect()->route('admin.products')->with(['error' => $this->error_msg]);
             }
-            return view('admin.products.edit',compact('branches','product'));
+            return view('admin.products.edit',compact('product'));
         }catch(\Exception $ex){
-            return redirect()->route('admin.products')->with(['error' => 'حدث مشكله جرب مره اخرى']);
+            dd($ex);
+            return redirect()->route('admin.products')->with(['error' => $this->error_msg]);
         }
         
     }
@@ -69,20 +75,32 @@ class ProductController extends Controller
     {
         try{
             $params = $request->except('_token');
+            if($request->image !== null){
+                $filePath = $this->uploadImage('products',$request->image);
+                $params['image'] = $filePath;
+            }
             Product::find($id)->update($params);
-            return redirect()->route('admin.products')->with(['success' => 'تم تحديث المنتج بنجاح']);
+            return redirect()->route('admin.products')->with(['success' =>'Product '.$this->updated_msg]);
         }catch(\Exception $ex){
-            return redirect()->route('admin.products')->with(['error' => 'حدث مشكله جرب مره اخرى']);
+            return redirect()->route('admin.products')->with(['error' => $this->error_msg]);
         }  
     }
 
     public function destroy($id)
     {
         try{
-            Product::find($id)->delete();
-            return redirect()->route('admin.products')->with(['success' => 'تم حذف المنتج بنجاح']);
+            $product = Product::find($id);
+            if(!$product){
+                return redirect()->route('admin.maincategories')->with(['error' =>$this->error_msg]);
+            }
+           
+            $image = base_path('assets/'.$product->image); 
+            unlink($image);
+            $product->delete();
+
+            return redirect()->route('admin.products')->with(['success' => 'Product '.$this->deleted_msg ]);
         }catch(\Exception $ex){
-            return redirect()->route('admin.products')->with(['error' => 'حدث مشكله جرب مره اخرى']);
+            return redirect()->route('admin.products')->with(['error' => $this->error_msg]);
         } 
     }
 }

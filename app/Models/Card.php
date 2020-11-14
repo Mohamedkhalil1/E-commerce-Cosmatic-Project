@@ -1,13 +1,12 @@
 <?php
-
-namespace App;
+namespace App\Models;
 
 use App\Transformers\Card\CardTransformer;
 use Illuminate\Database\Eloquent\Model;
 
 class Card extends Model
 {
-    protected $fillable = ['user_id'];
+    protected $guarded = [];
 
     public $transformer = CardTransformer::class;
 
