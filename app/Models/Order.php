@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Transformers\Order\OrderTransformer;
 use Illuminate\Database\Eloquent\Model;
-
+use App\User;
 class Order extends Model
 {
     protected $guarded = [];

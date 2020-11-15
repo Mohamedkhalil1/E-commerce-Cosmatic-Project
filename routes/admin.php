@@ -111,16 +111,13 @@ Route::group(
             ## end Clients Routes 
 
 
-            ## Invoice Suppliers Routes 
-            Route::group(['namespace' =>'Invoices','prefix' => 'suppliersInvoice'], function () {
-                Route::get('/','SupplierInvoiecController@index')->name('admin.suppliersInvoice');
-                Route::get('/create','SupplierInvoiecController@create')->name('admin.suppliersInvoice.create');
-                Route::post('/','SupplierInvoiecController@store')->name('admin.suppliersInvoice.store');
-                Route::get('/edit/{id}','SupplierInvoiecController@edit')->name('admin.suppliersInvoice.edit');
-                Route::put('/{id}','SupplierInvoiecController@update')->name('admin.suppliersInvoice.update');
-                Route::get('delete/{id}','SupplierInvoiecController@destroy')->name('admin.suppliersInvoice.delete');
+            ## Order Routes 
+            Route::group(['namespace' =>'Order','prefix' => 'orders'], function () {
+                Route::get('/','OrderController@index')->name('admin.orders');
+                Route::get('/show/{id}','OrderController@show')->name('admin.orders.show');
+               
             });
-            ## end Invoice Suppliers Routes 
+            ## end Order Routes 
 
             ## Users Routes 
 
