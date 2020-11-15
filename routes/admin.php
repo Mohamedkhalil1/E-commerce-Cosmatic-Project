@@ -86,17 +86,17 @@ Route::group(
             });
             ## end Brand Routes 
 
-             ## Employees Routes 
-             Route::group(['namespace' =>'Employees','prefix' => 'employees'], function () {
-                Route::get('/','EmployeeController@index')->name('admin.employees');
-                Route::get('/create','EmployeeController@create')->name('admin.employees.create');
-                Route::post('/','EmployeeController@store')->name('admin.employees.store');
-                Route::get('/show/{id}','EmployeeController@show')->name('admin.employees.show');
-                Route::get('/edit/{id}','EmployeeController@edit')->name('admin.employees.edit');
-                Route::put('/{id}','EmployeeController@update')->name('admin.employees.update');
-                Route::get('delete/{id}','EmployeeController@destroy')->name('admin.employees.delete');
+             ## Divisions Routes 
+             Route::group(['namespace' =>'Division','prefix' => 'divisions'], function () {
+                Route::get('/','DivisionController@index')->name('admin.divisions');
+                Route::get('/create','DivisionController@create')->name('admin.divisions.create');
+                Route::post('/','DivisionController@store')->name('admin.divisions.store');
+                Route::get('/show/{id}','DivisionController@show')->name('admin.divisions.show');
+                Route::get('/edit/{id}','DivisionController@edit')->name('admin.divisions.edit');
+                Route::put('/{id}','DivisionController@update')->name('admin.divisions.update');
+                Route::get('delete/{id}','DivisionController@destroy')->name('admin.divisions.delete');
             });
-            ## end Employees Routes 
+            ## end Divisions Routes 
 
             ## Invoices Routes 
             Route::group(['namespace' =>'Invoices','prefix' => 'invoices'], function () {

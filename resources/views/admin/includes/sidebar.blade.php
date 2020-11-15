@@ -27,6 +27,12 @@
               class="menu-title" data-i18n="nav.add_on_drag_drop.main">Brands </span></a>
           </li>
 
+          <span class="badge badge badge-secondary badge-pill float-right mr-1 mt-1"></span>
+          <li class="nav-item "><a href="{{route('admin.divisions')}}"><i class="icon-users" style="color:gray"></i><span
+              class="menu-title" data-i18n="nav.add_on_drag_drop.main">Divisions </span></a>
+          </li>
+
+
           
           <span class="badge badge badge-primary badge-pill float-right mr-1 mt-1"></span>
           <li class="nav-item"><a href="{{route('admin.brands')}}"><i class="ft-users"style="color:Indigo"></i><span
