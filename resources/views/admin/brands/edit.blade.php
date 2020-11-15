@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title',"Edit Category")
+@section('title',"Edit brand")
 @section('content')
 
     <div class="app-content content">
@@ -11,7 +11,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form">Update Category</h4>
+                                    <h4 class="card-title" id="basic-layout-form">Update brand</h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -27,38 +27,22 @@
                                 @include('admin.includes.alerts.errors')
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form class="form" action="{{route('admin.categories.update',$category->id)}}" method="POST"  enctype="multipart/form-data">
+                                        <form class="form" action="{{route('admin.brands.update',$brand->id)}}" method="POST"  enctype="multipart/form-data">
                                             @csrf
                                             @method('put')
                                             
-                                            <input type="hidden" value="{{$category->id}}" name="id">
-
-                                           
-
+                                            <input type="hidden" value="{{$brand->id}}" name="id">
                                             <div class="form-body">
-                                                <h4 class="form-section"><i class="ft-home"></i>Category Information</h4>
+                                                <h4 class="form-section"><i class="ft-home"></i>brand Information</h4>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">Title</label>
-                                                            <input type="text" value="{{$category->title}}" id="title"
+                                                            <input type="text" value="{{$brand->title}}" id="title"
                                                                     class="form-control"
-                                                                    placeholder="Category Title"
+                                                                    placeholder="brand Title"
                                                                     name="title">
                                                             @error("title")
-                                                            <span class="text-danger"> {{ $message }} </span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="projectinput1">Title (AR)</label>
-                                                            <input type="text" value="{{$category->title_ar}}" id="title"
-                                                                    class="form-control"
-                                                                    placeholder="Category Title In Arabic"
-                                                                    name="title_ar">
-                                                            @error("title_ar")
                                                             <span class="text-danger"> {{ $message }} </span>
                                                             @enderror
                                                         </div>

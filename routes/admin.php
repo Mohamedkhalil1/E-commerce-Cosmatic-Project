@@ -62,7 +62,7 @@ Route::group(
             });
             ## end Produts Routes 
 
-             ## Suppliers Routes 
+             ## SubCategory Routes 
              Route::group(['namespace' =>'Category','prefix' => 'subcategories'], function () {
                 Route::get('/','SubCategoryController@index')->name('admin.subcategories');
                 Route::get('/create','SubCategoryController@create')->name('admin.subcategories.create');
@@ -72,19 +72,19 @@ Route::group(
                 Route::put('/{id}','SubCategoryController@update')->name('admin.subcategories.update');
                 Route::get('delete/{id}','SubCategoryController@destroy')->name('admin.subcategories.delete');
             });
-            ## end Suppliers Routes 
+            ## end SubCategory Routes 
 
-             ## Clients Routes 
-             Route::group(['namespace' =>'Clients','prefix' => 'clients'], function () {
-                Route::get('/','ClientController@index')->name('admin.clients');
-                Route::get('/create','ClientController@create')->name('admin.clients.create');
-                Route::post('/','ClientController@store')->name('admin.clients.store');
-                Route::get('/show/{id}','ClientController@show')->name('admin.clients.show');
-                Route::get('/edit/{id}','ClientController@edit')->name('admin.clients.edit');
-                Route::put('/{id}','ClientController@update')->name('admin.clients.update');
-                Route::get('delete/{id}','ClientController@destroy')->name('admin.clients.delete');
+             ## Brand Routes 
+             Route::group(['namespace' =>'Brand','prefix' => 'brand'], function () {
+                Route::get('/','BrandController@index')->name('admin.brands');
+                Route::get('/create','BrandController@create')->name('admin.brands.create');
+                Route::post('/','BrandController@store')->name('admin.brands.store');
+                Route::get('/show/{id}','BrandController@show')->name('admin.brands.show');
+                Route::get('/edit/{id}','BrandController@edit')->name('admin.brands.edit');
+                Route::put('/{id}','BrandController@update')->name('admin.brands.update');
+                Route::get('delete/{id}','BrandController@destroy')->name('admin.brands.delete');
             });
-            ## end Clients Routes 
+            ## end Brand Routes 
 
              ## Employees Routes 
              Route::group(['namespace' =>'Employees','prefix' => 'employees'], function () {
