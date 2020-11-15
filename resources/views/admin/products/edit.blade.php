@@ -132,12 +132,51 @@
                                                             <label for="projectinput1"> Stock </label>
                                                             <input type="number"
                                                                     class="form-control"
-                                                                    placeholder="كميه المنتج"
+                                                                    placeholder="Product Stock"
                                                                     value="{{$product->stock}}"
                                                                     name="stock">
 
                                                             @error("stock")
                                                             <span class="text-danger"> {{ $message }} </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput2"> Sub Category </label>
+                                                            <select name="category_id" class=" form-control">
+                                                                <optgroup label="choose main category">
+                                                                    @if($categories && $categories-> count() > 0)
+                                                                        @foreach($categories as $category)
+                                                                            <option
+                                                                                value="{{$category->id}}" @if($product->categories()->whereNotNull('parent_id')->first() !== null && $product->categories()->whereNotNull('parent_id')->first()->id === $category->id ) selected @endif>{{$category->title}}</option>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </optgroup>
+                                                            </select>
+                                                            @error('category_id')
+                                                            <span class="text-danger"> {{$message}}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput2">Brand</label>
+                                                            <select name="brand_id" class=" form-control">
+                                                                <optgroup label="choose main category">
+                                                                    @if($brands && $brands-> count() > 0)
+                                                                        @foreach($brands as $brand)
+                                                                            <option
+                                                                                value="{{$brand->id}}" @if(isset($product->brand) && $product->brand->id === $brand->id ) selected @endif>{{$brand->title}}</option>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </optgroup>
+                                                            </select>
+                                                            @error('brand_id')
+                                                            <span class="text-danger"> {{$message}}</span>
                                                             @enderror
                                                         </div>
                                                     </div>

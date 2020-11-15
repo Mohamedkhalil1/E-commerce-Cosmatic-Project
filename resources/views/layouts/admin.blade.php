@@ -23,10 +23,10 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/admin/css/vendors.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/admin/css/vendors/css/weather-icons/climacons.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/admin/css/fonts/meteocons/style.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/admin/css/vendors/css/charts/morris.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/admin/css/vendors/css/charts/chartist.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/admin/css/vendors/css/forms/selects/select2.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/admin/css/vendors/css/pages/project.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/admin/vendors/css/charts/morris.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/admin/vendors/css/charts/chartist.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/admin/vendors/css/forms/selects/select2.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/admin/vendors/css/pages/project.css')}}">
     <link rel="stylesheet" type="text/css"
           href="{{asset('assets/admin/css/vendors/css/charts/chartist-plugin-tooltip.css')}}">
     <link rel="stylesheet" type="text/css"

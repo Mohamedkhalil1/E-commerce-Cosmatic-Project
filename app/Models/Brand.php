@@ -19,4 +19,8 @@ class Brand extends Model
         return $this->hasMany(Product::class,'brand_id');
     }
 
+    public function division(){
+        return $this->belongsTo(Deivison::class,'division_id');
+    }
+
 }

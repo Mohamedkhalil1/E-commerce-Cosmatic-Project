@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin\Category;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Category\SubCategoryRequest;
+use App\Models\Brand;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SubCategoryController extends Controller
 {
@@ -27,8 +29,8 @@ class SubCategoryController extends Controller
     {
         try{
             $categories = Category::whereNull('parent_id')->get();
-         
-            return view('admin.subcategories.create',compact('categories'));  
+            $brands = Brand::all();
+            return view('admin.subcategories.create',compact('categories','brands'));  
         }catch(\Exception $ex){
             return redirect()->route('admin.subcategories')->with(['error' => $this->error_msg]);
         }
@@ -37,10 +39,17 @@ class SubCategoryController extends Controller
     public function store(SubCategoryRequest $request)
     {
         try{
-            $params = $request->except('_token');
-            Category::create($params);
+            DB::beginTransaction();
+            $params = $request->except('_token','brands'); 
+            $category = Category::create($params);
+             // save product with categories relations
+         
+             $category->brands()->syncWithoutDetaching($request->brands); 
+             // end relation
+            DB::commit();
             return redirect()->route('admin.subcategories')->with(['success' => 'Category '.$this->added_msg]);
         }catch(\Exception $ex){
+            DB::rollback();
             dd($ex);
             return redirect()->route('admin.subcategories')->with(['error' => $this->error_msg]);
         }
@@ -58,7 +67,12 @@ class SubCategoryController extends Controller
            
             $category  = Category::whereNotNull('parent_id')->findOrFail($id);
             $categories  =Category::whereNull('parent_id')->get();
-            return view('admin.subcategories.edit',compact('category','categories'));
+            $brands_ids = array();
+            foreach($category->brands as $brand){
+                array_push($brands_ids,$brand->id);
+            }
+            $brands = Brand::all();
+            return view('admin.subcategories.edit',compact('category','categories','brands','brands_ids'));
         }catch(\Exception $ex){
             dd($ex);
             return redirect()->route('admin.subcategories')->with(['error' => $this->error_msg]);
@@ -69,8 +83,10 @@ class SubCategoryController extends Controller
     public function update(SubCategoryRequest $request, $id)
     {
         try{
-            $params = $request->except('_token');
-            Category::whereNotNull('parent_id')->findOrFail($id)->update($params);
+            $params = $request->except('_token','brands');
+            $category =  Category::whereNotNull('parent_id')->findOrFail($id);
+            $category->brands()->syncWithoutDetaching($request->brands);
+            $category->update($params);
             return redirect()->route('admin.subcategories')->with(['success' =>'Category '.$this->updated_msg]);
         }catch(\Exception $ex){
             return redirect()->route('admin.subcategories')->with(['error' => $this->error_msg]);

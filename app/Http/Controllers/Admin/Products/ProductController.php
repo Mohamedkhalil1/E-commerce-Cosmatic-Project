@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Admin\Products;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Products\ProductRequest;
+use App\Models\Brand;
+use App\Models\Category;
 use App\Models\Product;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -26,8 +29,9 @@ class ProductController extends Controller
     public function create()
     {
         try{
-            
-            return view('admin.products.create');  
+            $categories = Category::whereNotNull('parent_id')->get();
+            $brands = Brand::all();
+            return view('admin.products.create',compact('categories','brands'));  
         }catch(\Exception $ex){
             return redirect()->route('admin.products')->with(['error' => $this->error_msg]);
         }
@@ -37,12 +41,20 @@ class ProductController extends Controller
     {
     
         try{
-            $params = $request->except('_token');
+            DB::beginTransaction();
+            $params = $request->except('_token','category_id');
+            
             $filePath = $this->uploadImage('products',$request->image);
             $params['image'] = $filePath;
-            Product::create($params);
+            $product = Product::create($params);
+            $product->categories()->syncWithoutDetaching($request->category_id);
+            $category = Category::whereNotNull('parent_id')->findOrFail($request->category_id);
+            $main_category = $category->category;
+            $product->categories()->syncWithoutDetaching($main_category->id);
+            DB::commit();
             return redirect()->route('admin.products')->with(['success' => 'Product '.$this->added_msg]);
         }catch(\Exception $ex){
+            DB::rollback();
             dd($ex);
             return redirect()->route('admin.products')->with(['error' => $this->error_msg]);
         }
@@ -59,11 +71,12 @@ class ProductController extends Controller
         try{
            
             $product  = Product::find($id);
-           
+            $categories = Category::whereNotNull('parent_id')->get();
+            $brands = Brand::all();
             if($product === null){
                 return redirect()->route('admin.products')->with(['error' => $this->error_msg]);
             }
-            return view('admin.products.edit',compact('product'));
+            return view('admin.products.edit',compact('product','categories','brands'));
         }catch(\Exception $ex){
             dd($ex);
             return redirect()->route('admin.products')->with(['error' => $this->error_msg]);
@@ -74,14 +87,23 @@ class ProductController extends Controller
     public function update(ProductRequest $request, $id)
     {
         try{
-            $params = $request->except('_token');
+            DB::beginTransaction();
+            $params = $request->except('_token','category_id');
             if($request->image !== null){
                 $filePath = $this->uploadImage('products',$request->image);
                 $params['image'] = $filePath;
             }
-            Product::find($id)->update($params);
+            $product = Product::findOrFail($id);
+            $product->categories()->syncWithoutDetaching($request->category_id);
+            $category = Category::whereNotNull('parent_id')->findOrFail($request->category_id);
+            $main_category = $category->category;
+            $product->categories()->syncWithoutDetaching($main_category->id);
+            $product->update($params);
+            DB::commit();
             return redirect()->route('admin.products')->with(['success' =>'Product '.$this->updated_msg]);
         }catch(\Exception $ex){
+            DB::rollback();
+            dd($ex);
             return redirect()->route('admin.products')->with(['error' => $this->error_msg]);
         }  
     }

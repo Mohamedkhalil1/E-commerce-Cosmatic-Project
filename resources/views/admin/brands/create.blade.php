@@ -45,6 +45,26 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput2">Belong to Division</label>
+                                                            <select name="division_id" class=" form-control">
+                                                                <optgroup label="Choose Main Category">
+                                                                    @if($divisions && $divisions-> count() > 0)
+                                                                        @foreach($divisions as $division)
+                                                                            <option
+                                                                                value="{{$division->id}}">{{$division->title}} </option>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </optgroup>
+                                                            </select>
+                                                            @error('division_id')
+                                                            <span class="text-danger"> {{$message}}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             </div>
                                             <div class="form-actions mb-2">

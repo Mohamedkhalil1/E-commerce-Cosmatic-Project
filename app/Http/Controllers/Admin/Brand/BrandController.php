@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Brand;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Brand\BrandRequest;
 use App\Models\Brand;
+use App\Models\Deivison;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
@@ -24,7 +25,8 @@ class BrandController extends Controller
     public function create()
     {
         try{
-            return view('admin.brands.create');  
+            $divisions = Deivison::all();
+            return view('admin.brands.create',compact('divisions'));  
         }catch(\Exception $ex){
             return redirect()->route('admin.brands')->with(['error' => $this->error_msg]);
         }
@@ -53,7 +55,8 @@ class BrandController extends Controller
         try{
            
             $brand  = Brand::findOrFail($id);
-            return view('admin.brands.edit',compact('brand'));
+            $divisions = Deivison::all();
+            return view('admin.brands.edit',compact('brand','divisions'));
         }catch(\Exception $ex){
             dd($ex);
             return redirect()->route('admin.brands')->with(['error' => $this->error_msg]);

@@ -36,6 +36,7 @@
                                             <thead class="">
                                             <tr>
                                                 <th>Title</th>
+                                                <th>Division</th>
                                                 <th>Settings</th>
                                             </tr>
                                             </thead>
@@ -45,7 +46,7 @@
                                                 @foreach($brands as $brand)
                                                     <tr>
                                                         <td>{{$brand->title}}</td>
-                                                       
+                                                        <td>{{$brand->division === null? '' : $brand->division->title}}</td>
                                                         <td>
                                                             <div class="btn-group" role="group"
                                                                  aria-label="Basic example">

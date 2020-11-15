@@ -36,10 +36,12 @@
                                             <thead class="">
                                             <tr>
                                                 <th>Title</th>
-                                                <th>Description</th>
                                                 <th>Price</th>
                                                 <th>PriceAfterDiscount</th>
-                                                 <th>Stock</th>
+                                                <th>Stock</th>
+                                                <th>SubCategory</th>
+                                                <th>Category</th>
+                                                <th>Brand</th>
                                                 <th>Image</th>
                                                 <th>Settings</th>
                                             </tr>
@@ -50,10 +52,21 @@
                                                 @foreach($products as $product)
                                                     <tr>
                                                         <td>{{$product->title}}</td>
-                                                        <td>{{$product->description}}</td>
                                                         <td>{{$product->price}}</td>
                                                         <td>{{$product->price_discount}}</td>
                                                         <td>{{$product->stock}}</td>
+                                                         <td>
+                                                             {{$product->categories()->get()->whereNotNull('parent_id')->first() !== null ?
+                                                             $product->categories()->get()->whereNotNull('parent_id')->first()->title
+                                                             :
+                                                             ''}}
+                                                            </td>
+                                                         <td>{{$product->categories()->get()->whereNull('parent_id')->first() !== null ?
+                                                            $product->categories()->get()->whereNull('parent_id')->first()->title
+                                                            :
+                                                            ''
+                                                            }}</td>
+                                                         <td>{{$product->brand->title}}</td>
                                                         <td>
                                                            <img style="width: 150px; height: 100px;" src="http://localhost:8888/assets/{{$product->image}}">
                                                         </td>

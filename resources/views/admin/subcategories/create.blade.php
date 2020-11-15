@@ -61,7 +61,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput2"> Main Category </label>
                                                             <select name="parent_id" class=" form-control">
@@ -80,6 +80,26 @@
                                                         </div>
                                                     </div>
 
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1"> Select Brands
+                                                            </label>
+                                                            <select name="brands[]" class="select2 form-control" multiple>
+                                                                <optgroup label="Select Brands">
+                                                                    @if($brands && $brands -> count() > 0)
+                                                                        @foreach($brands as $brand)
+                                                                            <option
+                                                                                value="{{$brand->id}}">{{$brand->title}}</option>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </optgroup>
+                                                            </select>
+                                                            @error('brands')
+                                                            <span class="text-danger"> {{$message}}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    
 
                                                 </div>
                                             </div>

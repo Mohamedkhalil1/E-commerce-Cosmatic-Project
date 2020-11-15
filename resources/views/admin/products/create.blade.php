@@ -129,6 +129,46 @@
                                                         </div>
                                                     </div>
 
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput2"> Sub Category </label>
+                                                            <select name="category_id" class=" form-control">
+                                                                <optgroup label="choose main category">
+                                                                    @if($categories && $categories-> count() > 0)
+                                                                        @foreach($categories as $category)
+                                                                            <option
+                                                                                value="{{$category->id}}">{{$category->title}}</option>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </optgroup>
+                                                            </select>
+                                                            @error('category_id')
+                                                            <span class="text-danger"> {{$message}}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput2">Brand</label>
+                                                            <select name="brand_id" class=" form-control">
+                                                                <optgroup label="choose main category">
+                                                                    @if($brands && $brands-> count() > 0)
+                                                                        @foreach($brands as $brand)
+                                                                            <option
+                                                                                value="{{$brand->id}}">{{$brand->title}}</option>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </optgroup>
+                                                            </select>
+                                                            @error('brand_id')
+                                                            <span class="text-danger"> {{$message}}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="complaintinput5">Description </label>

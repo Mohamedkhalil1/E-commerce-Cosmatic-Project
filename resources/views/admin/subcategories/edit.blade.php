@@ -82,6 +82,28 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1"> Select Brands
+                                                            </label>
+                                                            <select name="brands[]" class="select2 form-control" multiple>
+                                                                <optgroup label="Select Brands">
+                                                                    @if($brands && $brands -> count() > 0)
+                                                                        @foreach($brands as $brand)
+                                                                            <option
+                                                                                
+                                                                                value="{{$brand->id}}" @if(in_array($brand->id,$brands_ids))selected @endif>{{$brand->title}}</option>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </optgroup>
+                                                            </select>
+                                                            @error('brands')
+                                                            <span class="text-danger"> {{$message}}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
                                                     
                                                 </div>
                                             </div>
