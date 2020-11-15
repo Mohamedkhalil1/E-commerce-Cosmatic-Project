@@ -35,7 +35,7 @@
 
           
           <span class="badge badge badge-primary badge-pill float-right mr-1 mt-1"></span>
-          <li class="nav-item"><a href="{{route('admin.brands')}}"><i class="ft-users"style="color:Indigo"></i><span
+          <li class="nav-item"><a href="{{route('admin.clients')}}"><i class="ft-users"style="color:Indigo"></i><span
               class="menu-title" data-i18n="nav.add_on_drag_drop.main"> Clients </span></a>
           </li>
       </ul>

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ad extends Model
 {
-    protected $guarded = [];
+   protected $guarded = [];
    protected $table = 'ads';
    public $transformer = AdTransformer::class;
 
