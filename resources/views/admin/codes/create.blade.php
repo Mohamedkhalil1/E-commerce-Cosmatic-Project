@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title',"Add Division")
+@section('title',"Add Code")
 @section('content')
 
     <div class="app-content content">
@@ -12,7 +12,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title" id="basic-layout-form">Add New Division </h3>
+                                    <h3 class="card-title" id="basic-layout-form">Add New Code </h3>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -28,23 +28,37 @@
                                 @include('admin.includes.alerts.errors')
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form class="form" action="{{route('admin.divisions.store')}}" method="POST">
+                                        <form class="form" action="{{route('admin.codes.store')}}" method="POST">
                                             @csrf
                                             <div class="form-body">
-                                                <h5 class="form-section"><i class="la la-tag"></i>Division Information </h5>
+                                                <h5 class="form-section"><i class="la la-tag"></i>Code Information </h5>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">Title</label>
-                                                            <input type="text" value="{{old('title')}}" id="title"
+                                                            <label for="projectinput1">Code</label>
+                                                            <input type="text" value="{{old('code')}}" id="code"
                                                                     class="form-control"
-                                                                    placeholder="Division Title"
-                                                                    name="title">
-                                                            @error("title")
+                                                                    placeholder="Code"
+                                                                    name="code">
+                                                            @error("code")
                                                             <span class="text-danger"> {{ $message }} </span>
                                                             @enderror
                                                         </div>
                                                     </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">Discount</label>
+                                                            <input type="number" value="{{old('discount')}}" id="discount"
+                                                                    class="form-control"
+                                                                    placeholder="Discount perctage"
+                                                                    name="discount">
+                                                            @error("discount")
+                                                            <span class="text-danger"> {{ $message }} </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             </div>
                                             <div class="form-actions mb-2">

@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use App\Transformers\User\ContactUsTransformer;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 
 class ContactUs extends Model
 {
@@ -13,7 +14,7 @@ class ContactUs extends Model
     protected $guarded = [];
 
     public function user(){
-        return BelongsTo(User::class,'user_id');
+        return $this->belongsTo(User::class,'user_id');
     }
 
 }

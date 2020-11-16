@@ -88,12 +88,14 @@ class ProductController extends Controller
     {
         try{
             DB::beginTransaction();
+            $product = Product::findOrFail($id);
             $params = $request->except('_token','category_id');
             if($request->image !== null){
                 $filePath = $this->uploadImage('products',$request->image);
                 $params['image'] = $filePath;
+                $image = base_path('assets/'.$product->image); 
+                unlink($image);
             }
-            $product = Product::findOrFail($id);
             $product->categories()->syncWithoutDetaching($request->category_id);
             $category = Category::whereNotNull('parent_id')->findOrFail($request->category_id);
             $main_category = $category->category;

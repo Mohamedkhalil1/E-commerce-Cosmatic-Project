@@ -1,10 +1,8 @@
 @extends('layouts.admin')
-@section('title',"Add Division")
+@section('title',"Edit Ad")
 @section('content')
-
     <div class="app-content content">
         <div class="content-wrapper">
-            
             <div class="content-body">
                 <!-- Basic form layout section start -->
                 <section id="basic-form-layouts">
@@ -12,7 +10,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title" id="basic-layout-form">Add New Division </h3>
+                                    <h4 class="card-title" id="basic-layout-form">Update Ad</h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -28,15 +26,38 @@
                                 @include('admin.includes.alerts.errors')
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form class="form" action="{{route('admin.divisions.store')}}" method="POST">
+                                        <form class="form" action="{{route('admin.divisions.update',$ad->id)}}" method="POST"  enctype="multipart/form-data">
                                             @csrf
+                                            @method('put')
+                                            
+                                            <div class="form-group">
+                                                <div class="text-center">
+                                                    <img
+                                                        src="http://localhost:8888/assets/{{$ad->image}}"
+                                                        class="height-150" alt="product image">
+                                                </div>
+                                            </div>
+
+                                            
+                                            <div class="form-group">
+                                                <label> Ad Image </label>
+                                                <label id="projectinput7" class="file center-block">
+                                                    <input type="file" id="file" name="image">
+                                                    <span class="file-custom"></span>
+                                                </label>
+                                                @error('image')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
+                                            </div>
+
+                                            <input type="hidden" value="{{$ad->id}}" name="id">
                                             <div class="form-body">
-                                                <h5 class="form-section"><i class="la la-tag"></i>Division Information </h5>
+                                                <h4 class="form-section"><i class="ft-home"></i>Ad Information</h4>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">Title</label>
-                                                            <input type="text" value="{{old('title')}}" id="title"
+                                                            <input type="text" value="{{$ad->title}}" id="title"
                                                                     class="form-control"
                                                                     placeholder="Division Title"
                                                                     name="title">
@@ -47,17 +68,17 @@
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div class="form-actions mb-2">
-                                             
+                                               
                                                 <button type="submit" class="btn btn-primary float-right">
-                                                    Save
+                                                    update
                                                 </button>
 
                                                 <button type="button" class="btn btn-warning mr-1 float-right"
-                                                        onclick="history.back();">
-                                                     Back
+                                                onclick="history.back();">
+                                                    back
                                                 </button>
-
                                             </div>
                                         </form>
                                     </div>
@@ -72,6 +93,3 @@
     </div>
 
 @endsection
-
-
-

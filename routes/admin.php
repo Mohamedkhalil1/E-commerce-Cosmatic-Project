@@ -128,6 +128,38 @@ Route::group(
 
             ## end Users Routes
 
+
+            ## Ads Routes 
+            Route::group(['namespace' =>'Ad','prefix' => 'ads'], function () {
+                Route::get('/','AdController@index')->name('admin.ads');
+                Route::get('/create','AdController@create')->name('admin.ads.create');
+                Route::post('/','AdController@store')->name('admin.ads.store');
+                Route::get('/edit/{id}','AdController@edit')->name('admin.ads.edit');
+                Route::put('/{id}','AdController@update')->name('admin.ads.update');
+                Route::get('delete/{id}','AdController@destroy')->name('admin.ads.delete');
+            });
+            ## end Ads Routes
+            
+
+            ## Codes Routes 
+            Route::group(['namespace' =>'Code','prefix' => 'codes'], function () {
+                Route::get('/','CodeController@index')->name('admin.codes');
+                Route::get('/create','CodeController@create')->name('admin.codes.create');
+                Route::post('/','CodeController@store')->name('admin.codes.store');
+                Route::get('/edit/{id}','CodeController@edit')->name('admin.codes.edit');
+                Route::put('/{id}','CodeController@update')->name('admin.codes.update');
+                Route::get('delete/{id}','CodeController@destroy')->name('admin.codes.delete');
+            });
+            ## end Codes Routes
+
+
+            ## Contact US Routes 
+            Route::group(['namespace' =>'Contact','prefix' => 'contactus'], function () {
+                Route::get('/','ContactUsController@index')->name('admin.contactus');
+            });
+            ## end Contact US Routes
+
+
             
             
         });

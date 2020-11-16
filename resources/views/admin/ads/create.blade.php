@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title',"Add Division")
+@section('title',"Add Ad")
 @section('content')
 
     <div class="app-content content">
@@ -12,7 +12,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title" id="basic-layout-form">Add New Division </h3>
+                                    <h3 class="card-title" id="basic-layout-form">Add New Ad </h3>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -28,17 +28,29 @@
                                 @include('admin.includes.alerts.errors')
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form class="form" action="{{route('admin.divisions.store')}}" method="POST">
+                                        <form class="form" action="{{route('admin.ads.store')}}" method="POST"  enctype="multipart/form-data">
                                             @csrf
+
+                                            <div class="form-group">
+                                                <label>Ad Image</label>
+                                                <label id="projectinput7" class="file center-block">
+                                                    <input type="file" id="file" name="image">
+                                                    <span class="file-custom"></span>
+                                                </label>
+                                                @error('image')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
+                                            </div>
+                                            
                                             <div class="form-body">
-                                                <h5 class="form-section"><i class="la la-tag"></i>Division Information </h5>
+                                                <h5 class="form-section"><i class="la la-tag"></i>Ads Information </h5>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">Title</label>
                                                             <input type="text" value="{{old('title')}}" id="title"
                                                                     class="form-control"
-                                                                    placeholder="Division Title"
+                                                                    placeholder="Ad Title"
                                                                     name="title">
                                                             @error("title")
                                                             <span class="text-danger"> {{ $message }} </span>
