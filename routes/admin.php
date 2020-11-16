@@ -165,6 +165,18 @@ Route::group(
             ## end Companies Routes
 
 
+            ## Shippings Routes 
+            Route::group(['namespace' =>'Shipping','prefix' => 'shippings'], function () {
+                Route::get('/','ShippingController@index')->name('admin.shippings');
+                Route::get('/create','ShippingController@create')->name('admin.shippings.create');
+                Route::post('/','ShippingController@store')->name('admin.shippings.store');
+                Route::get('/edit/{id}','ShippingController@edit')->name('admin.shippings.edit');
+                Route::put('/{id}','ShippingController@update')->name('admin.shippings.update');
+                Route::get('delete/{id}','ShippingController@destroy')->name('admin.shippings.delete');
+            });
+            ## end Shippings Routes
+
+
             ## Contact US Routes 
             Route::group(['namespace' =>'Contact','prefix' => 'contactus'], function () {
                 Route::get('/','ContactUsController@index')->name('admin.contactus');

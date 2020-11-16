@@ -13,7 +13,7 @@ class ShippingRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->user();
     }
 
     /**
@@ -24,7 +24,8 @@ class ShippingRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'city' => 'required',
+            'shipping' => 'required|numeric'
         ];
     }
 }

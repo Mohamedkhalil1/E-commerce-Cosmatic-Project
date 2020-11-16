@@ -66,9 +66,9 @@
               class="menu-title" data-i18n="nav.add_on_drag_drop.main"> Messages </span></a>
           </li>
 
-          <span class="badge badge badge-primary badge-pill float-right mr-1 mt-1">{{App\Models\ContactUs::count()}}</span>
-          <li class="nav-item"><a href="{{route('admin.contactus')}}"><i class="la la-comments-o"style="color:blue"></i><span
-              class="menu-title" data-i18n="nav.add_on_drag_drop.main"> Shipping Settin </span></a>
+          <span class="badge badge badge-danger badge-pill float-right mr-1 mt-1">{{App\Models\Shipping::count()}}</span>
+          <li class="nav-item"><a href="{{route('admin.shippings')}}"><i class="la la-ship"style="color:red"></i><span
+              class="menu-title" data-i18n="nav.add_on_drag_drop.main"> Shipping Settings </span></a>
           </li>
           
           
