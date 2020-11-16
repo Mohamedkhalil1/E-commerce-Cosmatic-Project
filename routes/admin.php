@@ -153,6 +153,18 @@ Route::group(
             ## end Codes Routes
 
 
+            ## Companies Routes 
+            Route::group(['namespace' =>'Company','prefix' => 'companies'], function () {
+                Route::get('/','CompanyController@index')->name('admin.companies');
+                Route::get('/create','CompanyController@create')->name('admin.companies.create');
+                Route::post('/','CompanyController@store')->name('admin.companies.store');
+                Route::get('/edit/{id}','CompanyController@edit')->name('admin.companies.edit');
+                Route::put('/{id}','CompanyController@update')->name('admin.companies.update');
+                Route::get('delete/{id}','CompanyController@destroy')->name('admin.companies.delete');
+            });
+            ## end Companies Routes
+
+
             ## Contact US Routes 
             Route::group(['namespace' =>'Contact','prefix' => 'contactus'], function () {
                 Route::get('/','ContactUsController@index')->name('admin.contactus');

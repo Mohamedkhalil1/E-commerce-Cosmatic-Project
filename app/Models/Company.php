@@ -11,4 +11,10 @@ class Company extends Model
    public $timestamps = false;
 
    public $transformer = CompanyTransformer::class;
+
+    public function products(){
+        return $this->hasMany(Product::class,'company_id');
+    }
+
+
 }

@@ -70,9 +70,9 @@ return [
         ],
 
 
-        'vendors' => [
+        'companies' => [
             'driver' => 'local',
-            'root' => base_path().'/assets/images/vendors/',
+            'root' => base_path().'/assets/images/companies/',
             'url' => env('APP_URL').'/public',
             'visibility' => 'public',
         ],

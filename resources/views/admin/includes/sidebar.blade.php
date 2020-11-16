@@ -7,6 +7,12 @@
           </li>
 
 
+          <span class="badge badge badge-warning badge-pill float-right mr-1 mt-1">{{App\Models\Company::count()}}</span>
+          <li class="nav-item "><a href="{{route('admin.companies')}}"><i class="la la-building" style="color:goldenrod"></i><span
+              class="menu-title" data-i18n="nav.add_on_drag_drop.main">Companies </span></a>
+          </li>
+
+
           <span class="badge badge badge-secondary badge-pill float-right mr-1 mt-1">{{App\Models\Deivison::count()}}</span>
           <li class="nav-item "><a href="{{route('admin.divisions')}}"><i class="la la-tasks" style="color:gray"></i><span
               class="menu-title" data-i18n="nav.add_on_drag_drop.main">Divisions </span></a>
@@ -27,8 +33,6 @@
           <li class="nav-item"><a href="{{route('admin.subcategories')}}"><i class="icon-grid" style="color:goldenrod"></i><span
               class="menu-title" data-i18n="nav.add_on_drag_drop.main">Sub Categories </span></a>
           </li>
-
-         
 
           <span class="badge badge badge-dark badge-pill float-right mr-1 mt-1">{{App\Models\Product::count()}}</span>
           <li class="nav-item"><a href="{{route('admin.products')}}"><i class="la la-tags" style="color:black"></i><span
@@ -60,6 +64,11 @@
           <span class="badge badge badge-primary badge-pill float-right mr-1 mt-1">{{App\Models\ContactUs::count()}}</span>
           <li class="nav-item"><a href="{{route('admin.contactus')}}"><i class="la la-comments-o"style="color:blue"></i><span
               class="menu-title" data-i18n="nav.add_on_drag_drop.main"> Messages </span></a>
+          </li>
+
+          <span class="badge badge badge-primary badge-pill float-right mr-1 mt-1">{{App\Models\ContactUs::count()}}</span>
+          <li class="nav-item"><a href="{{route('admin.contactus')}}"><i class="la la-comments-o"style="color:blue"></i><span
+              class="menu-title" data-i18n="nav.add_on_drag_drop.main"> Shipping Settin </span></a>
           </li>
           
           
