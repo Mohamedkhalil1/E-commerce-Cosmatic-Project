@@ -48,7 +48,15 @@ class CompanyController extends Controller
 
     public function show($id)
     {
-        //
+        try{
+           
+            $company  = Company::findOrFail($id);
+            $products = $company->products()->get();
+            return view('admin.companies.show',compact('company','products'));
+        }catch(\Exception $ex){
+            dd($ex);
+            return redirect()->route('admin.companies')->with(['error' => $this->error_msg]);
+        }
     }
 
     public function edit($id)

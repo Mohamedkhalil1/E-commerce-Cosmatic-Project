@@ -45,7 +45,7 @@
                                             @isset($brands)
                                                 @foreach($brands as $brand)
                                                     <tr>
-                                                        <td>{{$brand->title}}</td>
+                                                        <td><a href="{{route('admin.brands.show',$brand->id)}}">{{$brand->title}}</a></td>
                                                         <td>{{$brand->division === null? '' : $brand->division->title}}</td>
                                                         <td>
                                                             <div class="btn-group" role="group"

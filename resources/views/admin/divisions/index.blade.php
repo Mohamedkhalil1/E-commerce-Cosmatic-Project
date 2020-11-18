@@ -44,7 +44,7 @@
                                             @isset($divisions)
                                                 @foreach($divisions as $division)
                                                     <tr>
-                                                        <td>{{$division->title}}</td>
+                                                        <td><a href="{{route('admin.divisions.show',$division->id)}}">{{$division->title}}</a></td>
                                                        
                                                         <td>
                                                             <div class="btn-group" role="group"

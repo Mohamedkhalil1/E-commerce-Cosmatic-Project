@@ -45,7 +45,15 @@ class CategoryController extends Controller
 
     public function show($id)
     {
-        //
+        try{
+            $category  = Category::whereNull('parent_id')->findOrFail($id);
+            $categories = $category->categories()->whereNotNull('parent_id')->get();
+            $products= $category->products()->get();
+            return view('admin.categories.show',compact('category','categories','products'));
+        }catch(\Exception $ex){
+            dd($ex);
+            return redirect()->route('admin.categories')->with(['error' => $this->error_msg]);
+        }
     }
 
     public function edit($id)

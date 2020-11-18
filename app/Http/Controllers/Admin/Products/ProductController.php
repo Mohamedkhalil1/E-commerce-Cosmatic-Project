@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Products\ProductRequest;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Company;
 use App\Models\Product;
 
 use Illuminate\Http\Request;
@@ -31,8 +32,10 @@ class ProductController extends Controller
         try{
             $categories = Category::whereNotNull('parent_id')->get();
             $brands = Brand::all();
-            return view('admin.products.create',compact('categories','brands'));  
+            $companies = Company::all();
+            return view('admin.products.create',compact('categories','brands','companies'));  
         }catch(\Exception $ex){
+            dd($ex);
             return redirect()->route('admin.products')->with(['error' => $this->error_msg]);
         }
     }

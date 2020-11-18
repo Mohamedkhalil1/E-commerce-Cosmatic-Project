@@ -58,7 +58,15 @@ class SubCategoryController extends Controller
 
     public function show($id)
     {
-        //
+        try{
+           
+            $category  = Category::whereNotNull('parent_id')->findOrFail($id);
+            $products = $category->products()->get();
+            return view('admin.subcategories.show',compact('category','products'));
+        }catch(\Exception $ex){
+            dd($ex);
+            return redirect()->route('admin.subcategories')->with(['error' => $this->error_msg]);
+        }
     }
 
     public function edit($id)

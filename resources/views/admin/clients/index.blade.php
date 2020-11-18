@@ -46,7 +46,7 @@
                                             @isset($clients)
                                                 @foreach($clients as $client)
                                                     <tr>
-                                                        <td>{{$client->name}}</td>
+                                                        <td><a href="{{route('admin.clients.show',$client->id)}}">{{$client->name}}</a></td>
                                                         <td>{{$client->phone}}</td>
                                                         <td>{{$client->email}}</td>
                                                         <td>

@@ -46,13 +46,20 @@ class ClientController extends Controller
 
     public function show($id)
     {
-        //
+        try{
+            $client  = User::findOrFail($id);
+            $orders = $client->orders()->get();
+            $products = $client->favourites()->get();
+            return view('admin.clients.show',compact('client','orders','products'));
+        }catch(\Exception $ex){
+            dd($ex);
+            return redirect()->route('admin.clients')->with(['error' => $this->error_msg]);
+        }
     }
 
     public function edit($id)
     {
         try{
-           
             $client  = User::findOrFail($id);
             return view('admin.clients.edit',compact('client'));
         }catch(\Exception $ex){

@@ -42,6 +42,8 @@
                                                 <th>SubCategory</th>
                                                 <th>Category</th>
                                                 <th>Brand</th>
+                                                <th>Selled</th>
+                                                <th>Company</th>
                                                 <th>Image</th>
                                                 <th>Settings</th>
                                             </tr>
@@ -67,6 +69,8 @@
                                                             ''
                                                             }}</td>
                                                          <td>{{$product->brand->title}}</td>
+                                                         <td>{{$product->count_selled}}</td>
+                                                           <td>{{$product->company->name}}</td>
                                                         <td>
                                                            <img style="width: 150px; height: 100px;" src="http://localhost:8888/assets/{{$product->image}}">
                                                         </td>

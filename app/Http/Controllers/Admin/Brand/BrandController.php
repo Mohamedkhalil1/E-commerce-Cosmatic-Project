@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Brand\BrandRequest;
 use App\Models\Brand;
 use App\Models\Deivison;
-use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
@@ -42,12 +41,19 @@ class BrandController extends Controller
             dd($ex);
             return redirect()->route('admin.brands')->with(['error' => $this->error_msg]);
         }
-     
     }
 
     public function show($id)
     {
-        //
+         try{
+            $brand  = Brand::findOrFail($id);
+            $categories = $brand->categories()->whereNotNull('parent_id')->get();
+            $products= $brand->products()->get();
+            return view('admin.brands.show',compact('brand','categories','products'));
+        }catch(\Exception $ex){
+            dd($ex);
+            return redirect()->route('admin.brands')->with(['error' => $this->error_msg]);
+        }
     }
 
     public function edit($id)

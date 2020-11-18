@@ -36,7 +36,7 @@
                                             <thead class="">
                                             <tr>
                                                 <th>Title</th>
-                                                <th>Title (Ar)</th>
+                                                <th>Main Category</th>
                                                 <th>Settings</th>
                                             </tr>
                                             </thead>
@@ -45,8 +45,8 @@
                                             @isset($categories)
                                                 @foreach($categories as $category)
                                                     <tr>
-                                                        <td>{{$category->title}}</td>
-                                                        <td>{{$category->title_ar}}</td>
+                                                        <td><a href="{{route('admin.subcategories.show',$category->id)}}">{{$category->title}}</td>
+                                                        <td>{{$category->category->title}}</td>
                                                        
                                                         <td>
                                                             <div class="btn-group" role="group"

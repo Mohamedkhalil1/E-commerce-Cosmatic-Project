@@ -169,6 +169,26 @@
                                                         </div>
                                                     </div>
 
+
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="projectinput2">Company</label>
+                                                            <select name="company_id" class=" form-control">
+                                                                <optgroup label="choose main category">
+                                                                    @if($companies && $companies-> count() > 0)
+                                                                        @foreach($companies as $company)
+                                                                            <option
+                                                                                value="{{$company->id}}">{{$company->name}}</option>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </optgroup>
+                                                            </select>
+                                                            @error('brand_id')
+                                                            <span class="text-danger"> {{$message}}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="complaintinput5">Description </label>

@@ -45,7 +45,7 @@
                                             @isset($categories)
                                                 @foreach($categories as $category)
                                                     <tr>
-                                                        <td>{{$category->title}}</td>
+                                                        <td><a href="{{route('admin.categories.show',$category->id)}}">{{$category->title}}</a></td>
                                                         <td>{{$category->title_ar}}</td>
                                                        
                                                         <td>

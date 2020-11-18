@@ -45,7 +45,15 @@ class DivisionController extends Controller
 
     public function show($id)
     {
-        //
+        try{
+           
+            $division  = Deivison::findOrFail($id);
+            $brands = $division->brands()->get();
+            return view('admin.divisions.show',compact('division','brands'));
+        }catch(\Exception $ex){
+            dd($ex);
+            return redirect()->route('admin.divisions')->with(['error' => $this->error_msg]);
+        }
     }
 
     public function edit($id)

@@ -43,6 +43,7 @@ Route::group(
              Route::group(['namespace' =>'Category','prefix' => 'categories'], function () {
                 Route::get('/','CategoryController@index')->name('admin.categories');
                 Route::get('/create','CategoryController@create')->name('admin.categories.create');
+                Route::get('/{id}','CategoryController@show')->name('admin.categories.show');
                 Route::post('/','CategoryController@store')->name('admin.categories.store');
                 Route::get('/show/{id}','CategoryController@show')->name('admin.categories.show');
                 Route::get('/edit/{id}','CategoryController@edit')->name('admin.categories.edit');
@@ -66,6 +67,7 @@ Route::group(
              Route::group(['namespace' =>'Category','prefix' => 'subcategories'], function () {
                 Route::get('/','SubCategoryController@index')->name('admin.subcategories');
                 Route::get('/create','SubCategoryController@create')->name('admin.subcategories.create');
+                Route::get('/{id}','SubCategoryController@show')->name('admin.subcategories.show');
                 Route::post('/','SubCategoryController@store')->name('admin.subcategories.store');
                 Route::get('/show/{id}','SubCategoryController@show')->name('admin.subcategories.show');
                 Route::get('/edit/{id}','SubCategoryController@edit')->name('admin.subcategories.edit');
@@ -78,6 +80,7 @@ Route::group(
              Route::group(['namespace' =>'Brand','prefix' => 'brand'], function () {
                 Route::get('/','BrandController@index')->name('admin.brands');
                 Route::get('/create','BrandController@create')->name('admin.brands.create');
+                Route::get('/{id}','BrandController@show')->name('admin.brands.show');
                 Route::post('/','BrandController@store')->name('admin.brands.store');
                 Route::get('/show/{id}','BrandController@show')->name('admin.brands.show');
                 Route::get('/edit/{id}','BrandController@edit')->name('admin.brands.edit');
@@ -90,6 +93,7 @@ Route::group(
              Route::group(['namespace' =>'Division','prefix' => 'divisions'], function () {
                 Route::get('/','DivisionController@index')->name('admin.divisions');
                 Route::get('/create','DivisionController@create')->name('admin.divisions.create');
+                Route::get('/{id}','DivisionController@show')->name('admin.divisions.show');
                 Route::post('/','DivisionController@store')->name('admin.divisions.store');
                 Route::get('/show/{id}','DivisionController@show')->name('admin.divisions.show');
                 Route::get('/edit/{id}','DivisionController@edit')->name('admin.divisions.edit');
@@ -103,6 +107,7 @@ Route::group(
              Route::group(['namespace' =>'Client','prefix' => 'clients'], function () {
                 Route::get('/','ClientController@index')->name('admin.clients');
                 Route::get('/create','ClientController@create')->name('admin.clients.create');
+                Route::get('/{id}','ClientController@show')->name('admin.clients.show');
                 Route::post('/','ClientController@store')->name('admin.clients.store');
                 Route::get('/edit/{id}','ClientController@edit')->name('admin.clients.edit');
                 Route::put('/{id}','ClientController@update')->name('admin.clients.update');
@@ -157,6 +162,7 @@ Route::group(
             Route::group(['namespace' =>'Company','prefix' => 'companies'], function () {
                 Route::get('/','CompanyController@index')->name('admin.companies');
                 Route::get('/create','CompanyController@create')->name('admin.companies.create');
+                Route::get('/{id}','CompanyController@show')->name('admin.companies.show');
                 Route::post('/','CompanyController@store')->name('admin.companies.store');
                 Route::get('/edit/{id}','CompanyController@edit')->name('admin.companies.edit');
                 Route::put('/{id}','CompanyController@update')->name('admin.companies.update');

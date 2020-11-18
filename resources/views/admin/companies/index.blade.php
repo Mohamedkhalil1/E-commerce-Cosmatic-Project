@@ -45,7 +45,7 @@
                                             @isset($companies)
                                                 @foreach($companies as $company)
                                                     <tr>
-                                                        <td>{{$company->name}}</td>
+                                                        <td><a href="{{route('admin.companies.show',$company->id)}}">{{$company->name}}</a></td>
                                                         <td>
                                                             <img style="width: 150px; height: 100px;" src="http://localhost:8888/assets/{{$company->logo}}">
                                                          </td>
