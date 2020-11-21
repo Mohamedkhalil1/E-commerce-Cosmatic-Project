@@ -77,7 +77,7 @@
                                         </table>
                                         
                                         <div class="justify-content-center d-flex">
-
+                                            {{ $orders->links() }}
                                         </div>
                                     </div>
                                 </div>

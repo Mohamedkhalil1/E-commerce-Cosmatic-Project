@@ -11,7 +11,7 @@ class OrderController extends Controller
     public function index()
     {
         try{
-            $orders = Order::all();
+            $orders = Order::paginate($this->pagination);
             return view('admin.orders.index',compact('orders'));
         }catch(\Exception $ex){
             return redirect()->route('admin.orders')->with(['error' =>  $this->error_msg]);

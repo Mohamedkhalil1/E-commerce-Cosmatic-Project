@@ -11,7 +11,7 @@ class CompanyController extends Controller
     public function index()
     {
         try{
-            $companies = Company::all();
+            $companies = Company::paginate($this->pagination);
             return view('admin.companies.index',compact('companies'));
         }catch(\Exception $ex){
             return redirect()->route('admin.companies')->with(['error' =>  $this->error_msg]);

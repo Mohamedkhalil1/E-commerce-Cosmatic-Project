@@ -66,7 +66,7 @@
                                         </table>
                                         
                                         <div class="justify-content-center d-flex">
-
+                                            {{ $shippings->links() }}
                                         </div>
                                     </div>
                                 </div>

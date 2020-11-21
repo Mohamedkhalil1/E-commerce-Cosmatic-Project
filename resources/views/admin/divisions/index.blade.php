@@ -64,7 +64,7 @@
                                         </table>
                                         
                                         <div class="justify-content-center d-flex">
-
+                                            {{ $divisions->links() }}
                                         </div>
                                     </div>
                                 </div>

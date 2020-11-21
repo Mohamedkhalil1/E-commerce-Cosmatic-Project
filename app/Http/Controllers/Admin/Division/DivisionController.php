@@ -12,7 +12,7 @@ class DivisionController extends Controller
     public function index()
     {
         try{
-            $divisions = Deivison::all();
+            $divisions = Deivison::paginate($this->pagination);
             return view('admin.divisions.index',compact('divisions'));
         }catch(\Exception $ex){
             return redirect()->route('admin.divisions')->with(['error' =>  $this->error_msg]);

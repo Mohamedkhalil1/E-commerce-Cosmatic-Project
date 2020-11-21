@@ -67,7 +67,7 @@
                                         </table>
                                         
                                         <div class="justify-content-center d-flex">
-
+                                            {{ $ads->links() }}
                                         </div>
                                     </div>
                                 </div>

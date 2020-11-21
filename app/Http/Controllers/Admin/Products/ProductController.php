@@ -24,12 +24,12 @@ class ProductController extends Controller
                 ->orWhere('company_name', 'like', '%'.$request->searchValue.'%')
                 ->orWhere('barcode', 'like', '%'.$request->searchValue.'%')
                 ->orderBy('id', 'desc')
-                ->get();
+                ->paginate($this->pagination);;
             }elseif($request->sort){
                 $products = Product::orderBy($request->sort, 'asc')
-                ->get();
+                ->paginate($this->pagination);;
             }else{
-                $products = Product::all();   
+                $products = Product::paginate($this->pagination);;   
             }
            
             return view('admin.products.index',compact('products'));

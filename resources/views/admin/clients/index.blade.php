@@ -31,7 +31,7 @@
 
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard table-responsive">
-                                        <tableclass="table table-de mb-0 display nowrap table-striped table-bordered">
+                                        <table class="table table-de mb-0 display nowrap table-striped table-bordered">
                                             <thead class="">
                                             <tr>
                                                 <th>Name</th>
@@ -66,7 +66,7 @@
                                         </table>
                                         
                                         <div class="justify-content-center d-flex">
-
+                                            {{ $clients->links() }}
                                         </div>
                                     </div>
                                 </div>

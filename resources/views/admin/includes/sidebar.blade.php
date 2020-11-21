@@ -35,7 +35,7 @@
           </li>
 
           <span class="badge badge badge-dark badge-pill float-right mr-1 mt-1">{{App\Models\Product::count()}}</span>
-          <li class="nav-item"><a href="{{route('admin.products')}}"><i class="la la-tags" style="color:black"></i><span
+          <li class="nav-item"><a href="{{route('admin.products')}}"><i class="icon-basket-loaded" style="color:black"></i><span
               class="menu-title" data-i18n="nav.add_on_drag_drop.main">Products</span></a>
           </li>
 

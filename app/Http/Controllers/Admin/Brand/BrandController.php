@@ -12,7 +12,7 @@ class BrandController extends Controller
     public function index()
     {
         try{
-            $brands = Brand::all();
+            $brands = Brand::paginate($this->pagination);
             return view('admin.brands.index',compact('brands'));
         }catch(\Exception $ex){
             return redirect()->route('admin.brands')->with(['error' =>  $this->error_msg]);

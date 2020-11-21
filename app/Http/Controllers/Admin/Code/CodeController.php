@@ -12,7 +12,7 @@ class CodeController extends Controller
     public function index()
     {
         try{
-            $codes = Code::all();
+            $codes = Code::paginate($this->pagination);
             return view('admin.codes.index',compact('codes'));
         }catch(\Exception $ex){
             return redirect()->route('admin.codes')->with(['error' =>  $this->error_msg]);

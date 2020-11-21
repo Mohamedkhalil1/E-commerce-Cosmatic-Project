@@ -12,7 +12,7 @@ class ClientController extends Controller
     public function index()
     {
         try{
-            $clients = User::all();
+            $clients = User::paginate($this->pagination);
             return view('admin.clients.index',compact('clients'));
         }catch(\Exception $ex){
             return redirect()->route('admin.clients')->with(['error' =>  $this->error_msg]);

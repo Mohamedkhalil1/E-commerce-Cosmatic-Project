@@ -67,7 +67,7 @@
                                         </table>
                                         
                                         <div class="justify-content-center d-flex">
-
+                                            {{ $companies->links() }}
                                         </div>
                                     </div>
                                 </div>

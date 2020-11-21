@@ -11,7 +11,7 @@ class ShippingController extends Controller
     public function index()
     {
         try{
-            $shippings = Shipping::all();
+            $shippings = Shipping::paginate($this->pagination);
             return view('admin.shippings.index',compact('shippings'));
         }catch(\Exception $ex){
             return redirect()->route('admin.shippings')->with(['error' =>  $this->error_msg]);

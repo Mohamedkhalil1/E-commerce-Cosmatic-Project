@@ -54,7 +54,7 @@
                                         </table>
                                         
                                         <div class="justify-content-center d-flex">
-
+                                            {{ $contacts->links() }}
                                         </div>
                                     </div>
                                 </div>

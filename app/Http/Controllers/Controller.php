@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
+use App\Models\Category;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -14,6 +16,8 @@ class Controller extends BaseController
     protected $added_msg= "has been added";
     protected $updated_msg = "has been updated";
     protected $deleted_msg = "has been deleted";
+
+    protected $pagination = 15;
 
     function uploadImage($folder,$image){
         $image->store('/',$folder);

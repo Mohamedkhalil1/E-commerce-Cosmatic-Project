@@ -66,7 +66,7 @@
                                         </table>
                                         
                                         <div class="justify-content-center d-flex">
-
+                                            {{ $categories->links() }}
                                         </div>
                                     </div>
                                 </div>

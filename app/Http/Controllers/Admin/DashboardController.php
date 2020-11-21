@@ -17,10 +17,14 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index(){
-        $orders = Order::OrderBy('id','desc')->limit(10)->get();
-        $products = Product::OrderBy('id','desc')->limit(10)->get();
+        $orders = Order::OrderBy('amount','desc')->limit(10)->get();
+        $products = Product::OrderBy('count_selled','desc')->limit(10)->get();
         $contacts = ContactUs::OrderBy('id','desc')->limit(10)->get();
-        $clients = User::OrderBy('id','desc')->limit(10)->get();
+
+        $clients = User::with('orders')->whereHas('orders',function ($query) {
+            $query->OrderBy('amount','desc');
+        })->OrderBy('id','desc')->limit(10)->get();
+
         return view('admin.dashboard',compact('orders','products','contacts','clients'));
     }
 }

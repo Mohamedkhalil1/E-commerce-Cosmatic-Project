@@ -92,13 +92,15 @@
           </div>
             <!-- Candlestick Multi Level Control Chart -->
 
+           
+
             <!-- Sell Orders & Buy Order -->
             <div class="row match-height">
 
                 <div id="recent-transactions" class="col-12">
                     <div class="card">
                       <div class="card-header">
-                        <h4 class="card-title"><a href="{{route('admin.orders')}}"><i class="la la-money" style="color:green"></i> latest Orders</a></h4>
+                        <h4 class="card-title"><a href="{{route('admin.orders')}}"><i class="la la-money" style="color:green"></i> 10 Top Orders</a></h4>
                         <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                         <div class="heading-elements">
                         </div>
@@ -154,7 +156,7 @@
                   <div class="col-12 col-xl-6">
                     <div class="card" style="height: 355px;">
                       <div class="card-header">
-                        <h4 class="card-title"><a href="{{route('admin.products')}}"><i class="la la-tags" style="color:black"></i> Lastest Products</a></h4>
+                        <h4 class="card-title"><a href="{{route('admin.products')}}"><i class="icon-basket-loaded" style="color:black"></i> 10 Top Products</a></h4>
                         <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                         
                       </div>
@@ -166,9 +168,10 @@
                             <thead class="">
                             <tr>
                                 <th>Title</th>
+                                <th>Image</th>
                                 <th>Price</th>
-                                <th>PriceAfterDiscount</th>
                                 <th>Stock</th>
+                               
                             </tr>
                             </thead>
                             <tbody>
@@ -177,7 +180,11 @@
                                 @foreach($products as $product)
                                     <tr>
                                         <td>{{$product->title}}</td>
-                                        <td>{{$product->price}}</td>
+                                        <td>
+                                          <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Kimberly Simmons" class="avatar avatar-sm pull-up">
+                                            <img class="media-object rounded-circle" src="http://localhost:8888/assets/{{$product->image}}" alt="image">
+                                          </li>
+                                       </td>
                                         <td>{{$product->price_discount}}</td>
                                         <td>{{$product->stock}}</td>
                                         
@@ -196,7 +203,7 @@
                   <div class="col-12 col-xl-6">
                     <div class="card" style="height: 355px;">
                       <div class="card-header">
-                        <h4 class="card-title"><a href="{{route('admin.clients')}}"><i class="la la-users" style="color:blue"></i> Lastest Client</a></h4>
+                        <h4 class="card-title"><a href="{{route('admin.clients')}}"><i class="la la-users" style="color:blue"></i> Top Clients</a></h4>
                         <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                         
                       </div>

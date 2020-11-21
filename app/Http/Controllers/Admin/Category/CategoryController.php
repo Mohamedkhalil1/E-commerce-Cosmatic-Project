@@ -11,7 +11,7 @@ class CategoryController extends Controller
     public function index()
     {
         try{
-            $categories = Category::whereNull('parent_id')->get();
+            $categories = Category::whereNull('parent_id')->paginate($this->pagination);
             return view('admin.categories.index',compact('categories'));
         }catch(\Exception $ex){
             return redirect()->route('admin.categories')->with(['error' =>  $this->error_msg]);
