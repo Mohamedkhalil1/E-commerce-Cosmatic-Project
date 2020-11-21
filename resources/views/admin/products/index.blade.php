@@ -13,7 +13,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">All Products</h4>
+                                    <h4 class="card-title"><a href="{{route('admin.products')}}">All Products</a></h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -31,8 +31,34 @@
 
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard table-responsive">
-                                        <table
-                                            class="table table-de mb-0 display nowrap table-striped table-bordered">
+                                        <div class="row">
+                                            <fieldset class="col-lg-6  col-md-6 col-sm-10 mt-1">
+                                                <form class="form" action="{{route('admin.products')}}" method="GET" >
+                                                        <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <button class="btn btn-success" type="button"><i class="la la-search"></i></button>
+                                                        </div>
+                                                        <input type="text" name="searchValue" class="form-control" placeholder="Search" aria-label="Amount">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-success" type="submit">Search!</button>
+                                                        </div>
+                                                        </div>
+                                                </form>
+                                            </fieldset>
+                                            <fieldset class="col-lg-4 col-md-4 col-sm-12"></fieldset>
+                                        
+                                            <fieldset class="form-group col-md-2 col-sm-12 mt-1">
+                                                <form class="form" action="{{route('admin.products')}}" method="GET">
+                                                    <select class="custom-select" name="sort" id="customSelect" onchange="this.form.submit()">
+                                                        <option selected="id" value="0">Sort By</option>
+                                                        <option value="id">ID</option>
+                                                        <option value="price">Price</option>
+                                                        <option value="stock">Stock</option>
+                                                    </select>
+                                                </form>
+                                            </fieldset>
+                                        </div>
+                                        <table class="table table-de mb-0 display nowrap table-striped table-bordered mt-3">
                                             <thead class="">
                                             <tr>
                                                 <th>Title</th>
@@ -103,4 +129,5 @@
             </div>
         </div>
     </div>
+    
 @endsection

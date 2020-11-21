@@ -31,8 +31,7 @@
 
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard table-responsive">
-                                        <table
-                                            class="table table-de mb-0 display nowrap table-striped table-bordered">
+                                        <tableclass="table table-de mb-0 display nowrap table-striped table-bordered">
                                             <thead class="">
                                             <tr>
                                                 <th>Name</th>

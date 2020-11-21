@@ -46,7 +46,7 @@
                       </div>
                     </div>
                     <div class="project-info-text pt-1">
-                      <h5>Selled Products</h5>
+                      <h5>Products sold</h5>
                     </div>
                   </div>
                 </div>

@@ -15,10 +15,23 @@ use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
    
-    public function index()
+    public function index(Request $request)
     {
         try{
-            $products = Product::all();
+            if($request->searchValue){
+                $products = Product::where('title', 'like', '%'.$request->searchValue.'%')
+                ->orWhere('barcode', 'like', '%'.$request->searchValue.'%')
+                ->orWhere('company_name', 'like', '%'.$request->searchValue.'%')
+                ->orWhere('barcode', 'like', '%'.$request->searchValue.'%')
+                ->orderBy('id', 'desc')
+                ->get();
+            }elseif($request->sort){
+                $products = Product::orderBy($request->sort, 'asc')
+                ->get();
+            }else{
+                $products = Product::all();   
+            }
+           
             return view('admin.products.index',compact('products'));
         }catch(\Exception $ex){
             return redirect()->route('admin.products')->with(['error' =>  $this->error_msg]);
@@ -130,4 +143,23 @@ class ProductController extends Controller
             return redirect()->route('admin.products')->with(['error' => $this->error_msg]);
         } 
     }
+
+    public function search(Request $request){
+   
+       $products = Product::where('title', 'like', '%'.$request->searchValue.'%')
+         ->orWhere('barcode', 'like', '%'.$request->searchValue.'%')
+         ->orWhere('company_name', 'like', '%'.$request->searchValue.'%')
+         ->orWhere('barcode', 'like', '%'.$request->searchValue.'%')
+         ->orderBy('id', 'desc')
+         ->get();
+        return view('admin.products.index',compact('products'));
+    }
+
+    public function sort(Request $request){
+   
+        $products = Product::orderBy($request->sort, 'asc')
+          ->get();
+         return view('admin.products.index',compact('products'));
+     }
+     
 }
