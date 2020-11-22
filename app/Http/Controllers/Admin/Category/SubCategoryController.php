@@ -49,6 +49,8 @@ class SubCategoryController extends Controller
         try{
             DB::beginTransaction();
             $params = $request->except('_token','brands'); 
+            $filePath = $this->uploadImage('categories',$request->image);
+            $params['image'] = $filePath;
             $category = Category::create($params);
              // save product with categories relations
          
@@ -102,9 +104,18 @@ class SubCategoryController extends Controller
             $params = $request->except('_token','brands');
             $category =  Category::whereNotNull('parent_id')->findOrFail($id);
             $category->brands()->syncWithoutDetaching($request->brands);
+            if($request->image !== null){
+                 if($category->image !== null){
+                    $image = base_path('assets/'.$category->image); 
+                    unlink($image);
+                }
+                $filePath = $this->uploadImage('categories',$request->image);
+                $params['image'] = $filePath;
+            }
             $category->update($params);
             return redirect()->route('admin.subcategories')->with(['success' =>'Category '.$this->updated_msg]);
         }catch(\Exception $ex){
+            dd($ex);
             return redirect()->route('admin.subcategories')->with(['error' => $this->error_msg]);
         }  
     }
@@ -113,6 +124,8 @@ class SubCategoryController extends Controller
     {
         try{
             $category = Category::whereNotNull('parent_id')->findOrFail($id);
+             $image = base_path('assets/'.$category->image); 
+            unlink($image);
             $category->delete();
             return redirect()->route('admin.subcategories')->with(['success' => 'Category '.$this->deleted_msg ]);
         }catch(\Exception $ex){

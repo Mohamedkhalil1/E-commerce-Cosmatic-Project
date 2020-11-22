@@ -32,6 +32,28 @@
                                             @method('put')
                                             
                                             <input type="hidden" value="{{$brand->id}}" name="id">
+
+                                            <div class="form-group">
+                                                <div class="text-center">
+                                                    <img
+                                                        src="http://localhost:8888/assets/{{$brand->image}}"
+                                                        class="rounded-circle  height-150" alt="product image">
+                                                </div>
+                                            </div>
+
+                                            
+                                            <div class="form-group">
+                                                <label> brand Image </label>
+                                                <label id="projectinput7" class="file center-block">
+                                                    <input type="file" id="file" name="image">
+                                                    <span class="file-custom"></span>
+                                                </label>
+                                                @error('image')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
+                                            </div>
+
+
                                             <div class="form-body">
                                                 <h4 class="form-section"><i class="ft-home"></i>brand Information</h4>
                                                 <div class="row">

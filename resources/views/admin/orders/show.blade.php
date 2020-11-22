@@ -38,7 +38,7 @@
             <!-- Invoice Customer Details -->
             <div id="invoice-customer-details" class="row pt-2">
               <div class="col-sm-12 text-center text-md-left">
-                <p class="text-muted">To</p>
+                <p class="text-muted">Bill To</p>
               </div>
               <div class="col-md-6 col-sm-12 text-center text-md-left">
                 <ul class="px-0 list-unstyled">
@@ -94,18 +94,54 @@
         </section>
 
         <div class="row">
+
           <div class="col-md-7 col-sm-12 text-center text-md-left">
+            <p class="lead">Payment Methods:</p>
+            <div class="row">
+              <div class="col-md-8">
+                <table class="table table-borderless table-sm">
+                  <tbody>
+                    <tr>
+                      <td>Payment Method</td>
+                      <td class="pink text-right">{{$order->payment_type}}</td>
+                    </tr>
+  
+                    <tr>
+                      <td>Status</td>
+                      <td class="pink text-right">
+                        @if($order->done === 0)
+                          <i class="warning font-medium-1 mr-1">Pending</i>
+                        @elseif($order->done==1)
+                          <i class="success font-medium-1 mr-1">Paid</i>
+                        @elseif($order->done === 4)
+                          <i class="danger font-medium-1 mr-1">Decline</i>
+                        @endif
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
+
+         
           <div class="col-md-5 col-sm-12">
-            <p class="lead">Total Price</p>
+            <p class="lead">Total due</p>
             <div class="table-responsive">
               <table class="table">
                 <tbody>
                   <tr>
-                    <td>Amount</td>
-                    <td class="text-right">{{$order->amount}} EGP</td>
+                    <td>Sub Total</td>
+                    <td class="text-right">{{$order->amount - $order->shipping_fees}} EGP</td>
                   </tr>
-                  
+                  <tr>
+                    <td>Shipping</td>
+                    <td class="text-right">{{$order->shipping_fees}} EGP</td>
+                  </tr>
+                  <tr>
+                    <td class="text-bold-800">Total</td>
+                    <td class="text-bold-800 text-right">{{$order->amount}} EGP</td>
+                  </tr>
                 </tbody>
               </table>
             </div>

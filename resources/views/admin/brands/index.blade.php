@@ -52,6 +52,7 @@
                                             <tr>
                                                 <th>Title</th>
                                                 <th>Division</th>
+                                                <th>Image</th>
                                                 <th>Settings</th>
                                             </tr>
                                             </thead>
@@ -62,6 +63,9 @@
                                                     <tr>
                                                         <td><a href="{{route('admin.brands.show',$brand->id)}}">{{$brand->title}}</a></td>
                                                         <td>{{$brand->division === null? '' : $brand->division->title}}</td>
+                                                        <td>
+                                                            <img style="width: 100px; height: 50px;" src="http://localhost:8888/assets/{{$brand->image}}">
+                                                         </td>
                                                         <td>
                                                             <div class="btn-group" role="group"
                                                                  aria-label="Basic example">

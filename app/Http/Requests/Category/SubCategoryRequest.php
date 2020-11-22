@@ -26,7 +26,8 @@ class SubCategoryRequest extends FormRequest
         return [
             'title' => 'required',
             'title_ar' => 'required',
-            'parent_id' => 'required|numeric'
+            'parent_id' => 'required|numeric',
+            'image' => 'required_without:id|image'
         ];
     }
 }

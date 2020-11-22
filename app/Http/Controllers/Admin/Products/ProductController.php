@@ -129,11 +129,8 @@ class ProductController extends Controller
     public function destroy($id)
     {
         try{
-            $product = Product::find($id);
-            if(!$product){
-                return redirect()->route('admin.maincategories')->with(['error' =>$this->error_msg]);
-            }
-           
+            $product = Product::findOrFail($id);
+          
             $image = base_path('assets/'.$product->image); 
             unlink($image);
             $product->delete();

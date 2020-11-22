@@ -26,6 +26,7 @@ class CategoryRequest extends FormRequest
         return [
             'title' => 'required',
             'title_ar' => 'required', 
+            'image' => 'required_without:id|image'
         ];
     }
 }

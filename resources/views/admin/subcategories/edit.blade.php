@@ -33,6 +33,26 @@
                                             
                                             <input type="hidden" value="{{$category->id}}" name="id">
 
+                                            <div class="form-group">
+                                                <div class="text-center">
+                                                    <img
+                                                        src="http://localhost:8888/assets/{{$category->image}}"
+                                                        class="rounded-circle  height-150" alt="product image">
+                                                </div>
+                                            </div>
+
+                                            
+                                            <div class="form-group">
+                                                <label> Category Image </label>
+                                                <label id="projectinput7" class="file center-block">
+                                                    <input type="file" id="file" name="image">
+                                                    <span class="file-custom"></span>
+                                                </label>
+                                                @error('image')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
+                                            </div>
+                                           
                                            
 
                                             <div class="form-body">

@@ -42,6 +42,8 @@ class CategoryController extends Controller
     {
         try{
             $params = $request->except('_token');
+            $filePath = $this->uploadImage('categories',$request->image);
+            $params['image'] = $filePath;
             Category::create($params);
             return redirect()->route('admin.categories')->with(['success' => 'Category '.$this->added_msg]);
         }catch(\Exception $ex){
@@ -80,8 +82,18 @@ class CategoryController extends Controller
     public function update(CategoryRequest $request, $id)
     {
         try{
+            $category=Category::whereNull('parent_id')->findOrFail($id);
             $params = $request->except('_token');
-            Category::whereNull('parent_id')->findOrFail($id)->update($params);
+            if($request->image !== null){
+                if($category->image !== null){
+                    $image = base_path('assets/'.$category->image); 
+                    unlink($image);
+                }
+                $filePath = $this->uploadImage('categories',$request->image);
+                $params['image'] = $filePath;
+                
+            }
+            $category->update($params);
             return redirect()->route('admin.categories')->with(['success' =>'Category '.$this->updated_msg]);
         }catch(\Exception $ex){
             return redirect()->route('admin.categories')->with(['error' => $this->error_msg]);
@@ -92,6 +104,8 @@ class CategoryController extends Controller
     {
         try{
             $category = Category::whereNull('parent_id')->findOrFail($id);
+            $image = base_path('assets/'.$category->image); 
+            unlink($image);
             $category->delete();
             return redirect()->route('admin.categories')->with(['success' => 'Category '.$this->deleted_msg ]);
         }catch(\Exception $ex){

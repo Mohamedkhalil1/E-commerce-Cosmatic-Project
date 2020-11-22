@@ -43,6 +43,8 @@ class BrandController extends Controller
     {
         try{
             $params = $request->except('_token');
+            $filePath = $this->uploadImage('brands',$request->image);
+            $params['image'] = $filePath;
             Brand::create($params);
             return redirect()->route('admin.brands')->with(['success' => 'Brand '.$this->added_msg]);
         }catch(\Exception $ex){
@@ -83,8 +85,17 @@ class BrandController extends Controller
        
         try{
             $params = $request->except('_token');
-           
-            Brand::findOrFail($id)->update($params);
+           $brand = Brand::findOrFail($id);
+            if($request->image !== null){
+                if($brand->image !== null){
+                    $image = base_path('assets/'.$brand->image); 
+                    unlink($image);
+                }
+                $filePath = $this->uploadImage('brands',$request->image);
+                $params['image'] = $filePath;
+               
+            }
+            $brand->update($params);
             return redirect()->route('admin.brands')->with(['success' =>'Brand '.$this->updated_msg]);
         }catch(\Exception $ex){
             return redirect()->route('admin.brands')->with(['error' => $this->error_msg]);
@@ -95,6 +106,8 @@ class BrandController extends Controller
     {
         try{
             $brand = Brand::findOrFail($id);
+            $image = base_path('assets/'.$brand->image); 
+            unlink($image);
             $brand->delete();
             return redirect()->route('admin.brands')->with(['success' => 'Brand '.$this->deleted_msg ]);
         }catch(\Exception $ex){

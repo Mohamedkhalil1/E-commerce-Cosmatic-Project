@@ -52,6 +52,7 @@
                                             <tr>
                                                 <th>Title</th>
                                                 <th>Main Category</th>
+                                                <th>Image</th>
                                                 <th>Settings</th>
                                             </tr>
                                             </thead>
@@ -62,7 +63,9 @@
                                                     <tr>
                                                         <td><a href="{{route('admin.subcategories.show',$category->id)}}">{{$category->title}}</td>
                                                         <td>{{$category->category->title}}</td>
-                                                       
+                                                        <td>
+                                                            <img style="width: 50px; height: 50px;" src="http://localhost:8888/assets/{{$category->image}}">
+                                                         </td>
                                                         <td>
                                                             <div class="btn-group" role="group"
                                                                  aria-label="Basic example">

@@ -28,8 +28,20 @@
                                 @include('admin.includes.alerts.errors')
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form class="form" action="{{route('admin.brands.store')}}" method="POST">
+                                        <form class="form" action="{{route('admin.brands.store')}}" method="POST" enctype="multipart/form-data">
                                             @csrf
+
+                                            <div class="form-group">
+                                                <label>brand Image </label>
+                                                <label id="projectinput7" class="file center-block">
+                                                    <input type="file" id="file" name="image">
+                                                    <span class="file-custom"></span>
+                                                </label>
+                                                @error('image')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
+                                            </div>
+
                                             <div class="form-body">
                                                 <h5 class="form-section"><i class="la la-tag"></i>brand Information </h5>
                                                 <div class="row">

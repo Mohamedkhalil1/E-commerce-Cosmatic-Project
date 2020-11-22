@@ -48,7 +48,7 @@
                       </div>
                     </div>
                     <div class="project-info-text pt-1">
-                      <h5>Selled Products</h5>
+                      <h5>Products Sold</h5>
                     </div>
                   </div>
 
@@ -105,7 +105,7 @@
                                       <th>Stock</th>
                                       <th>SubCategory</th>
                                       <th>Category</th>
-                                      <th>Selled</th>
+                                      <th>Sold</th>
                                       <th>Company</th>
                                       <th>Image</th>
                                       <th>Settings</th>
