@@ -5,13 +5,21 @@ namespace App\Http\Controllers\Admin\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Category\CategoryRequest;
 use App\Models\Category;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         try{
-            $categories = Category::whereNull('parent_id')->paginate($this->pagination);
+            if($request->searchValue){
+                $categories = Category::whereNull('parent_id')->where('title', 'like', '%'.$request->searchValue.'%')
+                ->paginate($this->pagination);
+            }
+            else{
+                $categories = Category::whereNull('parent_id')->paginate($this->pagination);
+            }
+
             return view('admin.categories.index',compact('categories'));
         }catch(\Exception $ex){
             return redirect()->route('admin.categories')->with(['error' =>  $this->error_msg]);

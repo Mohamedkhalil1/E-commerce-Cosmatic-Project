@@ -13,10 +13,18 @@ class SubCategoryController extends Controller
 {
     
 
-    public function index()
+    public function index(Request $request)
     {
         try{
-            $categories = Category::whereNotNull('parent_id')->paginate($this->pagination);
+            if($request->searchValue){
+                $categories = Category::whereNotNull('parent_id')->where('title', 'like', '%'.$request->searchValue.'%')
+                ->paginate($this->pagination);
+            }
+            else{
+                $categories =  Category::whereNotNull('parent_id')->paginate($this->pagination);
+            }
+            
+
             return view('admin.subcategories.index',compact('categories'));
         }catch(\Exception $ex){
             return redirect()->route('admin.subcategories')->with(['error' =>  $this->error_msg]);

@@ -32,20 +32,18 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard table-responsive">
                                         <div class="row">
-                                            <fieldset class="col-lg-6  col-md-6 col-sm-10 mt-1">
+                                            <fieldset class="col-lg-4  col-md-4 col-sm-10 mt-1">
                                                 <form class="form" action="{{route('admin.products')}}" method="GET" >
                                                         <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <button class="btn btn-success" type="button"><i class="la la-search"></i></button>
-                                                        </div>
+                                                       
                                                         <input type="text" name="searchValue" class="form-control" placeholder="Search" aria-label="Amount">
                                                         <div class="input-group-append">
-                                                            <button class="btn btn-success" type="submit">Search!</button>
+                                                            <button class="btn btn-success" type="submit"><i class="la la-search"></i></button>
                                                         </div>
                                                         </div>
                                                 </form>
                                             </fieldset>
-                                            <fieldset class="col-lg-4 col-md-4 col-sm-12"></fieldset>
+                                            <fieldset class="col-lg-6 col-md-6 col-sm-12"></fieldset>
                                         
                                             <fieldset class="form-group col-md-2 col-sm-12 mt-1">
                                                 <form class="form" action="{{route('admin.products')}}" method="GET">
@@ -58,7 +56,7 @@
                                                 </form>
                                             </fieldset>
                                         </div>
-                                        <table class="table table-de mb-0 display nowrap table-striped table-bordered mt-3">
+                                        <table class="table table-de mb-0 display nowrap table-striped table-bordered">
                                             <thead class="">
                                             <tr>
                                                 <th>Title</th>

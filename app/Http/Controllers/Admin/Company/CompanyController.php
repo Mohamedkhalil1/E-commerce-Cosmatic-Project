@@ -5,13 +5,20 @@ namespace App\Http\Controllers\Admin\Company;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Company\CompanyRequest;
 use App\Models\Company;
+use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         try{
-            $companies = Company::paginate($this->pagination);
+            if($request->searchValue){
+                $companies = Company::where('name', 'like', '%'.$request->searchValue.'%')
+                ->paginate($this->pagination);
+            }
+            else{
+                $companies = Company::paginate($this->pagination);  
+            }
             return view('admin.companies.index',compact('companies'));
         }catch(\Exception $ex){
             return redirect()->route('admin.companies')->with(['error' =>  $this->error_msg]);

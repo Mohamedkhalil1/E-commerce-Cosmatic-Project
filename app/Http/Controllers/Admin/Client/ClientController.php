@@ -9,10 +9,18 @@ use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         try{
-            $clients = User::paginate($this->pagination);
+            if($request->searchValue){
+                $clients = User::where('name', 'like', '%'.$request->searchValue.'%')
+                ->paginate($this->pagination);
+            }
+            else{
+                $clients = User::paginate($this->pagination);
+            }
+            
+          
             return view('admin.clients.index',compact('clients'));
         }catch(\Exception $ex){
             return redirect()->route('admin.clients')->with(['error' =>  $this->error_msg]);

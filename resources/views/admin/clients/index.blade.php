@@ -31,7 +31,21 @@
 
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard table-responsive">
-                                        <table class="table table-de mb-0 display nowrap table-striped table-bordered">
+                                       
+                                        <div class="row">
+                                            <fieldset class="col-lg-4  col-md-4 col-sm-10">
+                                                <form class="form" action="{{route('admin.clients')}}" method="GET" >
+                                                        <div class="input-group">
+                              
+                                                        <input type="text" name="searchValue" class="form-control" placeholder="Search" aria-label="Amount">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-success" type="submit"><i class="la la-search"></i></button>
+                                                        </div>
+                                                        </div>
+                                                </form>
+                                            </fieldset> 
+                                        </div>
+                                        <table class="table table-de mb-0 display nowrap table-striped table-bordered mt-1">
                                             <thead class="">
                                             <tr>
                                                 <th>Name</th>

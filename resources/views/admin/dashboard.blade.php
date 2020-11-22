@@ -100,7 +100,7 @@
                 <div id="recent-transactions" class="col-12">
                     <div class="card">
                       <div class="card-header">
-                        <h4 class="card-title"><a href="{{route('admin.orders')}}"><i class="la la-money" style="color:green"></i> 10 Top Orders</a></h4>
+                        <h4 class="card-title"><a href="{{route('admin.orders')}}"><i class="la la-money" style="color:green"></i> Top Orders</a></h4>
                         <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                         <div class="heading-elements">
                         </div>
@@ -156,7 +156,7 @@
                   <div class="col-12 col-xl-6">
                     <div class="card" style="height: 355px;">
                       <div class="card-header">
-                        <h4 class="card-title"><a href="{{route('admin.products')}}"><i class="icon-basket-loaded" style="color:black"></i> 10 Top Products</a></h4>
+                        <h4 class="card-title"><a href="{{route('admin.products')}}"><i class="icon-basket-loaded" style="color:black"></i> Top Products</a></h4>
                         <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                         
                       </div>

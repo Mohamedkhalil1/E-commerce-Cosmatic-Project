@@ -12,6 +12,7 @@ class AdController extends Controller
     public function index()
     {
         try{
+            
             $ads = Ad::paginate($this->pagination);
             return view('admin.ads.index',compact('ads'));
         }catch(\Exception $ex){

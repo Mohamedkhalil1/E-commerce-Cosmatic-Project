@@ -6,13 +6,21 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Brand\BrandRequest;
 use App\Models\Brand;
 use App\Models\Deivison;
+use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         try{
-            $brands = Brand::paginate($this->pagination);
+            if($request->searchValue){
+                $brands = Brand::where('title', 'like', '%'.$request->searchValue.'%')
+                ->paginate($this->pagination);
+            }
+            else{
+                $brands = Brand::paginate($this->pagination); 
+            }
+           
             return view('admin.brands.index',compact('brands'));
         }catch(\Exception $ex){
             return redirect()->route('admin.brands')->with(['error' =>  $this->error_msg]);
