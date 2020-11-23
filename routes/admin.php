@@ -120,6 +120,7 @@ Route::group(
             Route::group(['namespace' =>'Order','prefix' => 'orders'], function () {
                 Route::get('/','OrderController@index')->name('admin.orders');
                 Route::get('/show/{id}','OrderController@show')->name('admin.orders.show');
+               
                 Route::get('/change-status/{id}','OrderController@changeStatus')->name('admin.orders.status');
                 
             });
@@ -139,10 +140,17 @@ Route::group(
             Route::group(['namespace' =>'Ad','prefix' => 'ads'], function () {
                 Route::get('/','AdController@index')->name('admin.ads');
                 Route::get('/create','AdController@create')->name('admin.ads.create');
+                Route::get('/{id}','AdController@show')->name('admin.ads.show');
                 Route::post('/','AdController@store')->name('admin.ads.store');
                 Route::get('/edit/{id}','AdController@edit')->name('admin.ads.edit');
                 Route::put('/{id}','AdController@update')->name('admin.ads.update');
                 Route::get('delete/{id}','AdController@destroy')->name('admin.ads.delete');
+
+                
+                Route::get('/products/{id}','AdController@products')->name('admin.ads.products');
+                Route::get('/products/{id}/{product_id}','AdController@addProduct')->name('admin.ads.products.add');
+                Route::get('/products/remove/{id}/{product_id}','AdController@removeProduct')->name('admin.ads.products.remove');
+               
             });
             ## end Ads Routes
             

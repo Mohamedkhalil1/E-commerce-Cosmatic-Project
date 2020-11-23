@@ -45,7 +45,7 @@
                                             @isset($ads)
                                                 @foreach($ads as $ad)
                                                     <tr>
-                                                        <td>{{$ad->title}}</td>
+                                                        <td><a href="{{route('admin.ads.show',$ad->id)}}">{{$ad->title}}</a></td>
                                                         <td>
                                                             <img style="width: 150px; height: 100px;" src="http://localhost:8888/assets/{{$ad->image}}">
                                                          </td>
@@ -57,6 +57,9 @@
 
                                                                 <a href="{{route('admin.ads.delete',$ad->id)}}"
                                                                    class="btn btn-outline-danger box-shadow-3 mr-1 mb-1 btn-sm"><i class="ft-trash-2"></i></a>
+
+                                                                   <a href="{{route('admin.ads.products',$ad->id)}}"
+                                                                    class="btn btn-outline-success box-shadow-3 mr-1 mb-1 btn-sm"><i class="ft-check"></i></a>
 
                                                             </div>
                                                         </td>

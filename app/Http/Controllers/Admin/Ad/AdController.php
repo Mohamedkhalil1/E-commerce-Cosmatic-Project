@@ -51,7 +51,15 @@ class AdController extends Controller
 
     public function show($id)
     {
-        //
+        try{
+            $ad  = Ad::findOrFail($id);
+            $products = $ad->products()->get();
+            
+            return view('admin.ads.show',compact('ad','products'));
+        }catch(\Exception $ex){
+            dd($ex);
+            return redirect()->route('admin.ads')->with(['error' => $this->error_msg]);
+        }
     }
 
     public function edit($id)
@@ -102,14 +110,14 @@ class AdController extends Controller
         } 
     }
 
-    public function addProduct($id,Request $request){
+    public function addProduct($id,$product_id){
         try{
             DB::beginTransaction();
             $ad = Ad::findOrfail($id);
             if((int)$ad->status === 1){
                 return redirect()->route('admin.ads')->with(['error' => $this->error_msg]); 
             }
-            Product::where('id',$request->product_id)->update([
+            Product::where('id',$product_id)->update([
                 'ad_id' => $id
             ]);
             DB::commit();
@@ -131,21 +139,21 @@ class AdController extends Controller
             ]);
             return redirect()->back()->with(['success' => 'Product '.$this->deleted_msg]);
         }catch(\Exception $ex){
-            return redirect()->route('admin.invoices')->with(['error' => $this->error_msg]);
+            return redirect()->route('admin.ads')->with(['error' => $this->error_msg]);
         }
     }
  
 
-    public function showProduct($id){
+    public function products($id){
         try{
-            $invoice = Invoice::clientInvoices()->findOrfail($id);
-            if($invoice->status === 1){
-                return redirect()->route('admin.invoices')->with(['error' => "هذه الفاتوره مدفوعه"]); 
+            $ad = Ad::findOrfail($id);
+            if($ad->status === 1){
+                return redirect()->route('admin.ads')->with(['error' => $this->error_msg]);
             }
-            $products = Product::select()->where('branch_id',$invoice->branch_id)->paginate(PAGINATION_COUNT);
-            return view('admin.invoiecs.products',compact('products','invoice'));
+            $products = Product::paginate($this->pagination);
+            return view('admin.ads.products',compact('products','ad'));
         }catch(\Exception $ex){
-            return redirect()->route('admin.invoices')->with(['error' => 'حدث مشكله جرب مره اخرى']);
+            return redirect()->route('admin.ads')->with(['error' => $this->error_msg]);
         }
        
     }
