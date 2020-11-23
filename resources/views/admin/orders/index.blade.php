@@ -10,7 +10,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">All Orders</h4>
+                                    <h4 class="card-title"><a href="{{route('admin.orders')}}">All Orders</a></h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -28,6 +28,34 @@
 
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard table-responsive">
+
+                                        <div class="row">
+                                            <fieldset class="col-lg-4  col-md-4 col-sm-10 mt-1">
+                                                <form class="form" action="{{route('admin.orders')}}" method="GET" >
+                                                        <div class="input-group">
+                                                       
+                                                        <input type="text" name="searchValue" class="form-control" placeholder="Search" aria-label="Amount">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-success" type="submit"><i class="la la-search"></i></button>
+                                                        </div>
+                                                        </div>
+                                                </form>
+                                            </fieldset>
+                                            <fieldset class="col-lg-6 col-md-6 col-sm-12"></fieldset>
+                                        
+                                            <fieldset class="form-group col-md-2 col-sm-12 mt-1">
+                                                <form class="form" action="{{route('admin.orders')}}" method="GET">
+                                                    <select class="custom-select" name="sort" id="customSelect" onchange="this.form.submit()">
+                                                        <option selected="id" value="0">Sort By</option>
+                                                        <option value="id">ID</option>
+                                                         <option value="amount">Amount(v)<i class="la la-arrow-circle-o-down"></i></option>
+                                                         <option value="amount desc">Amount(^)</option>
+                                                        <option value="done">Status</option>
+                                                    </select>
+                                                </form>
+                                            </fieldset>
+                                        </div>
+
                                         <table
                                             class="table table-de mb-0 display nowrap table-striped table-bordered">
                                             <thead class="">
@@ -37,10 +65,9 @@
                                                 <th>Origin Amount($)</th>
                                                 <th>Status</th>
                                                 <th>Shipping($)</th>
-                                                <th>Payment Type</th>
-                                                <th>Tracing</th>
                                                 <th>Client</th>
                                                 <th>Created At</th>
+                                                <th>Settings</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -64,11 +91,20 @@
                                                         <td>
                                                            {{$order->shipping_fees}}
                                                         </td>
-                                                        <td>{{$order->payment_type}}</td>
-                                                        <td>{{$order->tracing_status}}</td>
+                                            
                                                         <td>{{$order->user === null ? '' : $order->user->name}}</td>
                                                         <td>
                                                            {{$order->created_at->format('Y-d-m')}}
+                                                        </td>
+
+                                                        <td>
+                                                            @if((int)$order->done !== 1)
+                                                            <a href="{{route('admin.orders.status',$order->id)}}"
+                                                                  title="accept order" class="btn btn-outline-success box-shadow-3 mr-1 mb-1 btn-sm"><i class="ft-check"></i></a>
+                                                            @else
+                                                            <a href="{{route('admin.orders.status',$order->id)}}"
+                                                                title="deactive order" class="btn btn-outline-danger box-shadow-3 mr-1 mb-1 btn-sm"><i class="ft-x"></i></a>
+                                                            @endif
                                                         </td>
                                                     </tr>
                                                 @endforeach

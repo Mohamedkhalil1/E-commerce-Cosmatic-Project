@@ -103,12 +103,14 @@
                   <tbody>
                     <tr>
                       <td>Payment Method</td>
-                      <td class="pink text-right">{{$order->payment_type}}</td>
+                      <td>
+                        <i class="success font-medium-1 mr-1">{{$order->payment_type}}</i>
+                      </td>
                     </tr>
   
                     <tr>
                       <td>Status</td>
-                      <td class="pink text-right">
+                      <td>
                         @if($order->done === 0)
                           <i class="warning font-medium-1 mr-1">Pending</i>
                         @elseif($order->done==1)

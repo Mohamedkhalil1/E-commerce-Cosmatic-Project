@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta name="description"
-          content="Modern admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities with bitcoin dashboard.">
+          content="">
     <meta name="keywords"
-          content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
-    <meta name="author" content="PIXINVENT">
+          content="">
+    <meta name="" content="">
     <title>@yield('title')</title>
     <link rel="apple-touch-icon" href="https://static.rfstat.com/renderforest/images/v2/logo-homepage/gradient_2.png">
     <link rel="shortcut icon" type="image/x-icon" href="https://static.rfstat.com/renderforest/images/v2/logo-homepage/gradient_2.png">
@@ -68,7 +68,7 @@
     <!-- BEGIN Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/admin/css/style-rtl.css')}}">
     <!-- END Custom CSS-->
-    @notify_css
+  
     @yield('style')
     <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
     <style>
@@ -135,7 +135,7 @@
 <script src="{{asset('assets/admin/js/scripts/forms/checkbox-radio.js')}}" type="text/javascript"></script>
 
 <script src="{{asset('assets/admin/js/scripts/modal/components-modal.js')}}" type="text/javascript"></script>
-<script src="{{asset('assets/admin/s/scripts/tables/datatables-extensions/datatable-button/datatable-print.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/admin/js/scripts/tables/datatables-extensions/datatable-button/datatable-print.js')}}" type="text/javascript"></script>
 
 <script>
     $('#meridians1').timeDropper({

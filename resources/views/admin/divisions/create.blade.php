@@ -45,6 +45,20 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">Title (AR)</label>
+                                                            <input type="text" value="{{old('title_ar')}}" id="title_ar"
+                                                                    class="form-control"
+                                                                    placeholder="Division Title In arabic"
+                                                                    name="title_ar">
+                                                            @error("title_ar")
+                                                            <span class="text-danger"> {{ $message }} </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             </div>
                                             <div class="form-actions mb-2">

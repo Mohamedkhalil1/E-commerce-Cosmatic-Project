@@ -36,6 +36,7 @@
                                             <thead class="">
                                             <tr>
                                                 <th>Title</th>
+                                                <th>Title (Ar)</th>
                                                 <th>Settings</th>
                                             </tr>
                                             </thead>
@@ -45,7 +46,7 @@
                                                 @foreach($divisions as $division)
                                                     <tr>
                                                         <td><a href="{{route('admin.divisions.show',$division->id)}}">{{$division->title}}</a></td>
-                                                       
+                                                        <td>{{$division->title_ar}}</td>
                                                         <td>
                                                             <div class="btn-group" role="group"
                                                                  aria-label="Basic example">

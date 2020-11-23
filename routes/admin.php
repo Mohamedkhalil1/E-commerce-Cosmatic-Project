@@ -120,7 +120,8 @@ Route::group(
             Route::group(['namespace' =>'Order','prefix' => 'orders'], function () {
                 Route::get('/','OrderController@index')->name('admin.orders');
                 Route::get('/show/{id}','OrderController@show')->name('admin.orders.show');
-               
+                Route::get('/change-status/{id}','OrderController@changeStatus')->name('admin.orders.status');
+                
             });
             ## end Order Routes 
 
@@ -156,19 +157,6 @@ Route::group(
                 Route::get('delete/{id}','CodeController@destroy')->name('admin.codes.delete');
             });
             ## end Codes Routes
-
-
-            ## Companies Routes 
-            Route::group(['namespace' =>'Company','prefix' => 'companies'], function () {
-                Route::get('/','CompanyController@index')->name('admin.companies');
-                Route::get('/create','CompanyController@create')->name('admin.companies.create');
-                Route::get('/{id}','CompanyController@show')->name('admin.companies.show');
-                Route::post('/','CompanyController@store')->name('admin.companies.store');
-                Route::get('/edit/{id}','CompanyController@edit')->name('admin.companies.edit');
-                Route::put('/{id}','CompanyController@update')->name('admin.companies.update');
-                Route::get('delete/{id}','CompanyController@destroy')->name('admin.companies.delete');
-            });
-            ## end Companies Routes
 
 
             ## Shippings Routes 

@@ -101,8 +101,10 @@ class SubCategoryController extends Controller
     public function update(SubCategoryRequest $request, $id)
     {
         try{
+            DB::beginTransaction();
             $params = $request->except('_token','brands');
             $category =  Category::whereNotNull('parent_id')->findOrFail($id);
+            $category->brands()->detach();
             $category->brands()->syncWithoutDetaching($request->brands);
             if($request->image !== null){
                  if($category->image !== null){
@@ -113,8 +115,10 @@ class SubCategoryController extends Controller
                 $params['image'] = $filePath;
             }
             $category->update($params);
+            DB::commit();
             return redirect()->route('admin.subcategories')->with(['success' =>'Category '.$this->updated_msg]);
         }catch(\Exception $ex){
+            DB::rollback();
             dd($ex);
             return redirect()->route('admin.subcategories')->with(['error' => $this->error_msg]);
         }  

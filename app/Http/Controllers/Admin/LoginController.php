@@ -17,7 +17,7 @@ class LoginController extends Controller
         if(auth()->guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])){
             return redirect()->route('admin.dashboard');
         }
-        return redirect()->back()->with(['error' => 'هناك خطأ بالبيانات']);  
+        return redirect()->back()->with(['error' => 'email or password is invalid']);  
     }
 
     public function Logout(){

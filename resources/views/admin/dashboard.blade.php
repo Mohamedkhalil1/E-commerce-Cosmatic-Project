@@ -35,7 +35,7 @@
                   <div class="card-body">
                     <div class="media d-flex">
                       <div class="media-body text-left">
-                        <h3 class="success">${{number_format(App\Models\Order::sum('amount'),1)}}</h3>
+                        <h3 class="success">${{number_format(App\Models\Order::where('done',1)->sum('amount'),1)}}</h3>
                         <h6>Profit</h6>
                       </div>
                       <div>
@@ -113,10 +113,10 @@
                               <tr>
                                   <th>#</th>
                                   <th>Amount($)</th>
-                                  <th>Origin Amount($)</th>
                                   <th>Status</th>
                                   <th>Client</th>
                                   <th>Created At</th>
+                                  <th>Settings</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -124,9 +124,7 @@
                                 @foreach($orders as $order)
                                     <tr>
                                         <td><a href="{{route('admin.orders.show',$order->id)}}">{{$order->invoice_num}}</a></td>
-                                        <td>{{$order->amount}}</td>
-                                        <td>{{$order->origin_amount}}</td>
-                                        
+                                        <td>{{$order->amount}}</td>     
                                         <td>
                                             @if($order->done === 0)
                                                 <i class="warning font-medium-1 mr-1">Pending</i>
@@ -141,6 +139,15 @@
                                         <td>
                                             {{$order->created_at->format('Y-d-m')}}
                                         </td>
+                                        <td>
+                                          @if((int)$order->done !== 1)
+                                          <a href="{{route('admin.orders.status',$order->id)}}"
+                                                title="accept order" class="btn btn-outline-success box-shadow-3 mr-1 mb-1 btn-sm"><i class="ft-check"></i></a>
+                                          @else
+                                          <a href="{{route('admin.orders.status',$order->id)}}"
+                                              title="deactive order" class="btn btn-outline-danger box-shadow-3 mr-1 mb-1 btn-sm"><i class="ft-x"></i></a>
+                                          @endif
+                                      </td>
                                     </tr>
                                 @endforeach
                               @endisset
@@ -181,7 +188,7 @@
                                     <tr>
                                         <td>{{$product->title}}</td>
                                         <td>
-                                          <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Kimberly Simmons" class="avatar avatar-sm pull-up">
+                                          <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="{{$product->title}}" class="avatar avatar-sm pull-up">
                                             <img class="media-object rounded-circle" src="http://localhost:8888/assets/{{$product->image}}" alt="image">
                                           </li>
                                        </td>
