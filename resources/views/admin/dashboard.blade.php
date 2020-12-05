@@ -36,7 +36,7 @@
                     <div class="media d-flex">
                       <div class="media-body text-left">
                         <h3 class="success">${{number_format(App\Models\Order::where('done',1)->sum('amount'),1)}}</h3>
-                        <h6>Profit</h6>
+                        <h6>Renevue</h6>
                       </div>
                       <div>
                         <i class="la la-money success font-large-2 float-right"></i>
